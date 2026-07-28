@@ -22,19 +22,24 @@
             </div>
             
             <div class="admin-auth" style="display: flex; gap: 0.5rem; align-items: center;">
+                <div class="flex items-center gap-2" style="border-right: 1px solid var(--border); padding-right: 1rem; margin-right: 0.5rem;">
+                    <a href="{{ route('lang.switch', 'en') }}" class="{{ app()->getLocale() == 'en' ? 'font-bold' : '' }}" style="text-decoration: none; color: inherit;">EN</a>
+                    <span>|</span>
+                    <a href="{{ route('lang.switch', 'id') }}" class="{{ app()->getLocale() == 'id' ? 'font-bold' : '' }}" style="text-decoration: none; color: inherit;">ID</a>
+                </div>
                 <div class="flex items-center gap-2 mr-2">
                     <div style="width: 35px; height: 35px; border-radius: 50%; background-color: var(--primary-light); display: flex; align-items: center; justify-content: center; color: var(--primary); font-weight: bold;">
                         {{ substr(auth()->user()->name, 0, 1) }}
                     </div>
                     <span class="font-medium hidden-mobile">{{ explode(' ', auth()->user()->name)[0] }}</span>
                 </div>
-                <a href="{{ route('home') }}" class="btn btn-outline" style="padding: 0.5rem; display: flex; align-items: center; justify-content: center;" title="Ke Beranda">
-                    <i class="fa-solid fa-home"></i><span class="hidden-mobile ml-2">Ke Beranda</span>
+                <a href="{{ route('home') }}" class="btn btn-outline" style="padding: 0.5rem; display: flex; align-items: center; justify-content: center;" title="{{ __('To Home') }}">
+                    <i class="fa-solid fa-home"></i><span class="hidden-mobile ml-2">{{ __('To Home') }}</span>
                 </a>
                 <form method="POST" action="{{ route('logout') }}" style="display:inline;">
                     @csrf
-                    <button type="submit" class="btn btn-primary" style="padding: 0.5rem; display: flex; align-items: center; justify-content: center;" title="Logout">
-                        <i class="fa-solid fa-sign-out-alt"></i><span class="hidden-mobile ml-2">Logout</span>
+                    <button type="submit" class="btn btn-primary" style="padding: 0.5rem; display: flex; align-items: center; justify-content: center;" title="{{ __('Logout') }}">
+                        <i class="fa-solid fa-sign-out-alt"></i><span class="hidden-mobile ml-2">{{ __('Logout') }}</span>
                     </button>
                 </form>
             </div>
@@ -44,35 +49,40 @@
     <div class="dashboard-layout">
         <!-- Sidebar -->
         <aside class="sidebar">
-            <h3 class="text-xl mb-6 text-primary">Admin Panel</h3>
+            <h3 class="text-xl mb-6 text-primary">{{ __('Admin Panel') }}</h3>
             <nav class="sidebar-menu">
-                <a href="{{ route('admin.dashboard') }}" class="sidebar-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
-                    <i class="fa-solid fa-gauge"></i> Dashboard
-                </a>
-                <a href="{{ route('admin.courts.index') }}" class="sidebar-link {{ request()->routeIs('admin.courts.*') ? 'active' : '' }}">
-                    <i class="fa-solid fa-layer-group"></i> Kelola Lapangan
-                </a>
-                <a href="{{ route('admin.reservations.index') }}" class="sidebar-link {{ request()->routeIs('admin.reservations.*') ? 'active' : '' }}">
-                    <i class="fa-solid fa-calendar-check"></i> Reservasi
-                </a>
-                <a href="{{ route('admin.coaches.index') }}" class="sidebar-link {{ request()->routeIs('admin.coaches.*') ? 'active' : '' }}">
-                    <i class="fa-solid fa-user-tie"></i> Coach
-                </a>
-                <a href="{{ route('admin.inventories.index') }}" class="sidebar-link {{ request()->routeIs('admin.inventories.*') ? 'active' : '' }}">
-                    <i class="fa-solid fa-box"></i> Inventaris
-                </a>
-                <a href="{{ route('admin.announcements.index') }}" class="sidebar-link {{ request()->routeIs('admin.announcements.*') ? 'active' : '' }}">
-                    <i class="fa-solid fa-bullhorn"></i> Pengumuman
-                </a>
-                <a href="{{ route('admin.discounts.index') }}" class="sidebar-link {{ request()->routeIs('admin.discounts.*') ? 'active' : '' }}">
-                    <i class="fa-solid fa-tags"></i> Harga & Diskon
-                </a>
-                <a href="{{ route('admin.users.index') }}" class="sidebar-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
-                    <i class="fa-solid fa-users"></i> Pengguna
-                </a>
-                <a href="{{ route('admin.backup.index') }}" class="sidebar-link {{ request()->routeIs('admin.backup.*') ? 'active' : '' }}">
-                    <i class="fa-solid fa-database"></i> Backup & Restore
-                </a>
+                            <div class="sidebar-label text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 px-3 mt-4">{{ __('Menu Utama') }}</div>
+                            <a href="{{ route('admin.dashboard') }}" class="sidebar-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                                <i class="fa-solid fa-gauge"></i> {{ __('Dashboard') }}
+                            </a>
+
+                            <div class="sidebar-label text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 px-3 mt-4">{{ __('Manajemen') }}</div>
+                            <a href="{{ route('admin.courts.index') }}" class="sidebar-link {{ request()->routeIs('admin.courts.*') ? 'active' : '' }}">
+                                <i class="fa-solid fa-layer-group"></i> {{ __('Manage Courts') }}
+                            </a>
+                            <a href="{{ route('admin.reservations.index') }}" class="sidebar-link {{ request()->routeIs('admin.reservations.*') ? 'active' : '' }}">
+                                <i class="fa-solid fa-calendar-check"></i> {{ __('Reservations') }}
+                            </a>
+                            <a href="{{ route('admin.coaches.index') }}" class="sidebar-link {{ request()->routeIs('admin.coaches.*') ? 'active' : '' }}">
+                                <i class="fa-solid fa-user-tie"></i> {{ __('Coaches') }}
+                            </a>
+                            <a href="{{ route('admin.inventories.index') }}" class="sidebar-link {{ request()->routeIs('admin.inventories.*') ? 'active' : '' }}">
+                                <i class="fa-solid fa-box"></i> {{ __('Inventory') }}
+                            </a>
+                            <a href="{{ route('admin.announcements.index') }}" class="sidebar-link {{ request()->routeIs('admin.announcements.*') ? 'active' : '' }}">
+                                <i class="fa-solid fa-bullhorn"></i> {{ __('Announcements') }}
+                            </a>
+                            <a href="{{ route('admin.discounts.index') }}" class="sidebar-link {{ request()->routeIs('admin.discounts.*') ? 'active' : '' }}">
+                                <i class="fa-solid fa-tags"></i> {{ __('Prices & Discounts') }}
+                            </a>
+
+                            <div class="sidebar-label text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 px-3 mt-4">{{ __('Pengaturan') }}</div>
+                            <a href="{{ route('admin.users.index') }}" class="sidebar-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
+                                <i class="fa-solid fa-users"></i> {{ __('Users') }}
+                            </a>
+                            <a href="{{ route('admin.backup.index') }}" class="sidebar-link {{ request()->routeIs('admin.backup.*') ? 'active' : '' }}">
+                                <i class="fa-solid fa-database"></i> {{ __('Backup & Restore') }}
+                            </a>
             </nav>
         </aside>
 

@@ -117,7 +117,7 @@
                     <span class="detail-value text-primary">{{ $reservation->reservation_code ?? '#RES-' . str_pad($reservation->id, 4, '0', STR_PAD_LEFT) }}</span>
                 </div>
                 <div class="detail-row">
-                    <span class="detail-label">Status</span>
+                    <span class="detail-label">{{ __('Status') }}</span>
                     <span class="detail-value"><span class="badge">Terkonfirmasi</span></span>
                 </div>
                 <div class="detail-row">
@@ -164,7 +164,7 @@
 
             @if($reservation->inventories->count() > 0)
             <div class="ticket-section">
-                <div style="font-weight: 600; color: #0f172a; margin-bottom: 0.75rem;">Sewa Perlengkapan:</div>
+                <div style="font-weight: 600; color: #0f172a; margin-bottom: 0.75rem;">{{ __('Equipment Rental:') }}</div>
                 @foreach($reservation->inventories as $inv)
                 <div class="detail-row" style="margin-bottom: 0.25rem;">
                     <span class="detail-label">{{ $inv->name }} (x{{ $inv->pivot->quantity }})</span>

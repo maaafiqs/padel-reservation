@@ -5,7 +5,7 @@
 @section('content')
 <div class="flex justify-between items-center mb-8">
     <h1 class="text-3xl">Update Status Reservasi</h1>
-    <a href="{{ route('admin.reservations.index') }}" class="btn btn-outline"><i class="fa-solid fa-arrow-left mr-2"></i> Kembali</a>
+    <a href="{{ route('admin.reservations.index') }}" class="btn btn-outline"><i class="fa-solid fa-arrow-left mr-2"></i> {{ __('Back') }}</a>
 </div>
 
 <div class="card" style="max-width: 600px;">
@@ -30,7 +30,7 @@
             </p>
         </div>
         <div class="col-span-2">
-            <p class="text-muted mb-1">Sewa Perlengkapan:</p>
+            <p class="text-muted mb-1">{{ __('Equipment Rental:') }}</p>
             @if($reservation->inventories->count() > 0)
                 <ul class="list-disc pl-5 mt-1 text-sm font-medium">
                     @foreach($reservation->inventories as $inv)
@@ -103,7 +103,7 @@
                 <option value="cancelled" {{ $reservation->status === 'cancelled' ? 'selected' : '' }}>Cancelled (Dibatalkan)</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary w-full" style="width: 100%;">Perbarui Status</button>
+        <button type="submit" class="btn btn-primary w-full" style="width: 100%;">{{ __('Update Status') }}</button>
     </form>
 </div>
 @endsection

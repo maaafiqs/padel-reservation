@@ -33,28 +33,35 @@
             @endif
             
             <div class="nav-links">
-                <a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Beranda</a>
-                <a href="#lapangan" class="nav-link">Lapangan</a>
-                <a href="#fasilitas" class="nav-link">Fasilitas</a>
-                <a href="#coach" class="nav-link">Pelatih</a>
-                <a href="#galeri" class="nav-link">Galeri</a>
+                <a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">{{ __('Home') }}</a>
+                <a href="#lapangan" class="nav-link">{{ __('Courts') }}</a>
+                <a href="#fasilitas" class="nav-link">{{ __('Facilities') }}</a>
+                <a href="#coach" class="nav-link">{{ __('Coaches') }}</a>
+                <a href="#galeri" class="nav-link">{{ __('Gallery') }}</a>
             </div>
 
-            <div class="nav-auth">
-                @auth
-                    @if(auth()->user()->role === 'admin')
-                        <a href="{{ route('admin.dashboard') }}" class="btn btn-outline">Dashboard Admin</a>
+            <div class="nav-auth flex items-center gap-4">
+                <div class="flex items-center gap-2" style="border-right: 1px solid var(--border); padding-right: 1rem;">
+                    <a href="{{ route('lang.switch', 'en') }}" class="{{ app()->getLocale() == 'en' ? 'font-bold' : '' }}" style="text-decoration: none; color: inherit;">EN</a>
+                    <span>|</span>
+                    <a href="{{ route('lang.switch', 'id') }}" class="{{ app()->getLocale() == 'id' ? 'font-bold' : '' }}" style="text-decoration: none; color: inherit;">ID</a>
+                </div>
+                <div>
+                    @auth
+                        @if(auth()->user()->role === 'admin')
+                            <a href="{{ route('admin.dashboard') }}" class="btn btn-outline">{{ __('Admin Dashboard') }}</a>
+                        @else
+                            <a href="{{ route('user.dashboard') }}" class="btn btn-outline">{{ __('My Dashboard') }}</a>
+                        @endif
+                        <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+                            @csrf
+                            <button type="submit" class="btn btn-primary">{{ __('Logout') }}</button>
+                        </form>
                     @else
-                        <a href="{{ route('user.dashboard') }}" class="btn btn-outline">Dashboard Saya</a>
-                    @endif
-                    <form method="POST" action="{{ route('logout') }}" style="display:inline;">
-                        @csrf
-                        <button type="submit" class="btn btn-primary">Logout</button>
-                    </form>
-                @else
-                    <a href="{{ route('login') }}" class="btn btn-outline">Masuk</a>
-                    <a href="{{ route('register') }}" class="btn btn-primary">Daftar</a>
-                @endauth
+                        <a href="{{ route('login') }}" class="btn btn-outline">{{ __('Log in') }}</a>
+                        <a href="{{ route('register') }}" class="btn btn-primary">{{ __('Register') }}</a>
+                    @endauth
+                </div>
             </div>
         </div>
     </nav>
@@ -70,21 +77,21 @@
                 <a href="{{ route('home') }}" class="logo mb-4">
                     <i class="fa-solid fa-table-tennis-paddle-ball"></i> Maaafiqs Padel
                 </a>
-                <p class="text-muted">Platform reservasi lapangan padel terbaik dengan fasilitas lengkap dan pelatih profesional.</p>
+                <p class="text-muted">{{ __('The best padel court reservation platform with complete facilities and professional coaches.') }}</p>
             </div>
             <div>
-                <h4 class="mb-4">Tautan</h4>
+                <h4 class="mb-4">{{ __('Links') }}</h4>
                 <ul class="flex flex-col gap-2 text-muted">
-                    <li><a href="{{ route('home') }}">Beranda</a></li>
-                    <li><a href="#lapangan">Lapangan</a></li>
-                    <li><a href="#fasilitas">Fasilitas</a></li>
-                    <li><a href="#galeri">Galeri</a></li>
+                    <li><a href="{{ route('home') }}">{{ __('Home') }}</a></li>
+                    <li><a href="#lapangan">{{ __('Courts') }}</a></li>
+                    <li><a href="#fasilitas">{{ __('Facilities') }}</a></li>
+                    <li><a href="#galeri">{{ __('Gallery') }}</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="mb-4">Kontak</h4>
+                <h4 class="mb-4">{{ __('Contact') }}</h4>
                 <ul class="flex flex-col gap-2 text-muted">
-                    <li><i class="fa-solid fa-phone mr-2"></i> +62 812 3456 7890</li>
+                    <li><i class="fa-solid fa-phone mr-2"></i> 0800 1111 2222</li>
                     <li><i class="fa-solid fa-envelope mr-2"></i> info@maaafiqspadel.com</li>
                     <li><i class="fa-solid fa-location-dot mr-2"></i> Jl. Padel Indah No. 1, Jakarta</li>
                 </ul>

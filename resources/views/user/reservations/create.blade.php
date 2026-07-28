@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Buat Reservasi Baru')
+@section('title', __('Make a New Reservation'))
 
 @section('content')
 <style>
@@ -61,27 +61,12 @@
     }
 </style>
 <div class="dashboard-layout">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <h3 class="text-xl mb-6 text-primary">Menu Pengguna</h3>
-        <nav class="sidebar-menu">
-            <a href="{{ route('user.dashboard') }}" class="sidebar-link"><i class="fa-solid fa-gauge"></i> Dashboard</a>
-            <a href="{{ route('user.reservations.create') }}" class="sidebar-link active"><i class="fa-solid fa-calendar-plus"></i> Buat Reservasi</a>
-            <a href="{{ route('user.reservations.index') }}" class="sidebar-link"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat Booking</a>
-            <a href="{{ route('user.profile.edit') }}" class="sidebar-link"><i class="fa-solid fa-user"></i> Profil Saya</a>
-            <form method="POST" action="{{ route('logout') }}" style="margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 1rem;">
-                @csrf
-                <button type="submit" class="sidebar-link text-danger w-full" style="text-align: left; background: none; border: none; cursor: pointer; display: flex; align-items: center; width: 100%; color: #ef4444; gap: 0.75rem;">
-                    <i class="fa-solid fa-right-from-bracket"></i> Logout
-                </button>
-            </form>
-        </nav>
-    </aside>
+    @include('user.partials.sidebar')
 
     <!-- Main Content -->
     <main class="dashboard-content">
         <div class="flex justify-between items-center mb-8">
-            <h1 class="text-3xl">Buat Reservasi Baru</h1>
+            <h1 class="text-3xl">{{ __('Make a New Reservation') }}</h1>
         </div>
 
         @if(session('success'))
@@ -105,9 +90,9 @@
                 @csrf
                 
                 <div class="form-group mb-6">
-                    <label for="court_id" class="form-label">Pilih Lapangan</label>
+                    <label for="court_id" class="form-label">{{ __('Select Court') }}</label>
                     <select name="court_id" id="court_id" class="form-input" required>
-                        <option value="" data-price="0">-- Pilih Lapangan --</option>
+                        <option value="" data-price="0">-- {{ __(\'Select Court\') }} --</option>
                         @foreach($courts as $court)
                             <option value="{{ $court->id }}" data-price="{{ $court->price_per_hour }}" {{ old('court_id') == $court->id ? 'selected' : '' }}>
                                 {{ $court->name }} (Rp {{ number_format($court->price_per_hour, 0, ',', '.') }}/jam)
@@ -117,47 +102,47 @@
                 </div>
 
                 <div class="form-group mb-6">
-                    <label for="reservation_date" class="form-label">Tanggal Bermain</label>
+                    <label for="reservation_date" class="form-label">{{ __('Playing Date') }}</label>
                     <input type="date" name="reservation_date" id="reservation_date" class="form-input" required min="{{ date('Y-m-d', strtotime('+1 day')) }}" value="{{ old('reservation_date') }}" style="padding: 1rem; font-size: 1.25rem; height: auto; cursor: pointer; border: 2px solid var(--primary-light);">
                     <small class="text-muted mt-1 block">Silakan klik area di atas untuk memilih tanggal.</small>
                 </div>
 
                 <div class="mb-6">
-                    <label class="form-label mb-3 block">Pilih Jam Bermain <small class="text-muted">(Pilih jam mulai, lalu pilih jam selesai)</small></label>
+                    <label class="form-label mb-3 block">{{ __('Select Playing Time') }} <small class="text-muted">({{ __('Select start time, then select end time') }})</small></label>
                     <input type="hidden" name="start_time" id="start_time" required>
                     <input type="hidden" name="end_time" id="end_time" required>
                     
                     <div id="time-grid-container" class="time-grid-container">
                         <div class="col-span-full text-center p-6 bg-gray-50 border border-dashed rounded-md text-muted" style="grid-column: 1 / -1;">
-                            Pilih lapangan dan tanggal terlebih dahulu untuk melihat ketersediaan jam.
+                            {{ __('Select court and date first to see available hours.') }}
                         </div>
                     </div>
                     <small class="text-muted mt-2 block" id="time-loading" style="display: none;">Memuat ketersediaan...</small>
                     
                     <div id="selection-info" class="mt-4 p-3 bg-primary-light rounded-md text-primary flex justify-between items-center" style="display: none;">
                         <div>
-                            <strong>Terpilih:</strong> <span id="selected-time-range"></span>
+                            <strong>{{ __(\'Selected:\') }}</strong> <span id="selected-time-range"></span>
                         </div>
-                        <button type="button" id="btn-reset-time" class="btn btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.875rem; background-color: white;">Reset Pilihan</button>
+                        <button type="button" id="btn-reset-time" class="btn btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.875rem; background-color: white;">{{ __(\'Reset Selection\') }}</button>
                     </div>
                 </div>
 
                 <div class="form-group mb-6">
-                    <label for="coach_id" class="form-label">Pilih Pelatih (Opsional)</label>
+                    <label for="coach_id" class="form-label">{{ __('Select Coach (Optional)') }}</label>
                     <select name="coach_id" id="coach_id" class="form-input" disabled style="padding: 0.75rem; font-size: 1.1rem; height: auto;">
-                        <option value="">-- Pilih Waktu Selesai Terlebih Dahulu --</option>
+                        <option value="">-- {{ __('Select End Time First') }} --</option>
                     </select>
-                    <small class="text-muted" id="coach-loading" style="display: none;">Memuat pelatih tersedia...</small>
+                    <small class="text-muted" id="coach-loading" style="display: none;">{{ __('Loading available coaches...') }}</small>
                 </div>
 
                 <div class="mt-8 mb-4">
                     <div class="flex justify-between items-end border-b pb-2 mb-4">
                         <div>
-                            <h3 class="text-xl font-semibold">Sewa Perlengkapan Tambahan (Opsional)</h3>
-                            <p class="text-muted text-sm mt-1">Pilih raket atau bola jika Anda tidak membawanya.</p>
+                            <h3 class="text-xl font-semibold">{{ __('Rent Additional Equipment (Optional)') }}</h3>
+                            <p class="text-muted text-sm mt-1">{{ __('Choose racket or ball if you do not bring them.') }}</p>
                         </div>
                         <div style="width: 250px;">
-                            <input type="text" id="search-equipment" class="form-input text-sm" placeholder="Cari perlengkapan..." style="padding: 0.5rem; height: auto;">
+                            <input type="text" id="search-equipment" class="form-input text-sm" placeholder="{{ __('Search equipment...') }}" style="padding: 0.5rem; height: auto;">
                         </div>
                     </div>
                     
@@ -182,13 +167,13 @@
 
                     <!-- Selected Equipment Table -->
                     <div id="selected-equipment-section" class="mt-8 pt-6 border-t border-gray-200" style="display: none;">
-                        <h4 class="font-semibold mb-4 text-gray-800 text-lg">Barang yang akan disewa:</h4>
+                        <h4 class="font-semibold mb-4 text-gray-800 text-lg">{{ __('Items to be rented:') }}</h4>
                         <div class="border rounded-lg overflow-hidden shadow-sm" style="border-color: var(--border);">
                             <table class="w-full text-left border-collapse bg-white">
                                 <thead style="background-color: #f8fafc;">
                                     <tr>
-                                        <th class="py-3 px-4 font-semibold text-sm border-b text-gray-700" style="border-color: var(--border);">Nama Barang</th>
-                                        <th class="py-3 px-4 font-semibold text-sm border-b text-center text-gray-700" style="border-color: var(--border);">Jumlah</th>
+                                        <th class="py-3 px-4 font-semibold text-sm border-b text-gray-700" style="border-color: var(--border);">{{ __('Item Name') }}</th>
+                                        <th class="py-3 px-4 font-semibold text-sm border-b text-center text-gray-700" style="border-color: var(--border);">{{ __('Quantity') }}</th>
                                         <th class="py-3 px-4 font-semibold text-sm border-b text-right text-gray-700" style="border-color: var(--border);">Subtotal</th>
                                     </tr>
                                 </thead>
@@ -197,7 +182,7 @@
                                 </tbody>
                                 <tfoot class="bg-gray-50 border-t font-semibold" style="border-color: var(--border);">
                                     <tr>
-                                        <td colspan="2" class="py-4 px-4 text-right text-gray-700 uppercase text-sm tracking-wide">Total Sewa Perlengkapan:</td>
+                                        <td colspan="2" class="py-4 px-4 text-right text-gray-700 uppercase text-sm tracking-wide">{{ __('Total Equipment Rental:') }}</td>
                                         <td class="py-4 px-4 text-right text-primary text-xl" id="selected-equipment-total">Rp 0</td>
                                     </tr>
                                 </tfoot>
@@ -207,42 +192,42 @@
                 </div>
 
                 <div class="mt-8 mb-4">
-                    <h3 class="text-xl font-semibold border-b pb-2">Kode Promo (Opsional)</h3>
-                    <p class="text-muted text-sm mt-1 mb-4">Masukkan kode promo jika Anda memilikinya.</p>
+                    <h3 class="text-xl font-semibold border-b pb-2">{{ __('Promo Code (Optional)') }}</h3>
+                    <p class="text-muted text-sm mt-1 mb-4">{{ __('Enter a promo code if you have one.') }}</p>
                     <div class="form-group" style="max-width: 400px;">
-                        <input type="text" name="promo_code" id="promo_code" class="form-input" placeholder="Contoh: DISKON10" value="{{ old('promo_code') }}" style="text-transform: uppercase;">
+                        <input type="text" name="promo_code" id="promo_code" class="form-input" placeholder="{{ __('Example: DISCOUNT10') }}" value="{{ old('promo_code') }}" style="text-transform: uppercase;">
                     </div>
                 </div>
 
                 <!-- Ringkasan Pembayaran -->
                 <div id="booking-summary" class="card mt-8 mb-8" style="background-color: #f8fafc; border: 1px solid var(--border); display: none;">
-                    <h3 class="text-xl font-semibold mb-4 border-b pb-3 text-gray-800"><i class="fa-solid fa-receipt mr-2 text-primary"></i>Ringkasan Pembayaran</h3>
+                    <h3 class="text-xl font-semibold mb-4 border-b pb-3 text-gray-800"><i class="fa-solid fa-receipt mr-2 text-primary"></i>{{ __('Payment Summary') }}</h3>
                     
                     <div class="flex justify-between mb-3 text-gray-700">
-                        <span>Sewa Lapangan (<span id="summary-hours">0</span> Jam)</span>
+                        <span>{{ __('Court Rental') }} (<span id="summary-hours">0</span> {{ __('Hours') }})</span>
                         <span class="font-medium" id="summary-court-price">Rp 0</span>
                     </div>
                     
                     <div class="flex justify-between mb-3 text-gray-700" id="summary-coach-row" style="display: none;">
-                        <span>Jasa Pelatih</span>
+                        <span>{{ __('Coach Service') }}</span>
                         <span class="font-medium" id="summary-coach-price">Rp 0</span>
                     </div>
                     
                     <div class="flex justify-between mb-3 text-gray-700" id="summary-equipment-row" style="display: none;">
-                        <span>Sewa Perlengkapan</span>
+                        <span>{{ __('Equipment Rental') }}</span>
                         <span class="font-medium" id="summary-equipment-price">Rp 0</span>
                     </div>
                     
                     <div class="flex justify-between mt-4 pt-4 border-t border-gray-300">
-                        <span class="text-lg font-bold text-gray-800">Total Pembayaran</span>
+                        <span class="text-lg font-bold text-gray-800">{{ __('Total Payment') }}</span>
                         <span class="text-2xl font-bold text-primary" id="summary-total-price">Rp 0</span>
                     </div>
                 </div>
 
                 <div class="mt-8 flex justify-end gap-4">
-                    <a href="{{ route('user.dashboard') }}" class="btn btn-outline">Batal</a>
+                    <a href="{{ route('user.dashboard') }}" class="btn btn-outline">{{ __('Cancel') }}</a>
                     <button type="submit" class="btn btn-primary">
-                        <i class="fa-solid fa-check mr-2"></i> Konfirmasi Reservasi
+                        <i class="fa-solid fa-check mr-2"></i> {{ __('Confirm Reservation') }}
                     </button>
                 </div>
             </form>
@@ -282,7 +267,7 @@
             const dateStr = dateInput.value;
 
             if (!courtId || !dateStr) {
-                gridContainer.innerHTML = '<div class="col-span-full text-center p-6 bg-gray-50 border border-dashed rounded-md text-muted" style="grid-column: 1 / -1;">Pilih lapangan dan tanggal terlebih dahulu untuk melihat ketersediaan jam.</div>';
+                gridContainer.innerHTML = '<div class="col-span-full text-center p-6 bg-gray-50 border border-dashed rounded-md text-muted" style="grid-column: 1 / -1;">{{ __(\'Select court and date first to see available hours.\') }}</div>';
                 resetSelection();
                 return;
             }
@@ -290,7 +275,7 @@
             loadingIndicator.style.display = 'block';
             gridContainer.innerHTML = '';
             resetSelection();
-            coachSelect.innerHTML = '<option value="">-- Pilih Waktu Selesai Terlebih Dahulu --</option>';
+            coachSelect.innerHTML = '<option value="">-- {{ __(\'Select End Time First\') }} --</option>';
             coachSelect.disabled = true;
 
             fetch(`/user/api/booked-slots?court_id=${courtId}&date=${dateStr}`)
@@ -348,7 +333,7 @@
                     btn.innerHTML = `<span class="time-text">${hour}</span><span class="status-text">Booked</span>`;
                 } else {
                     btn.className = 'time-box';
-                    btn.innerHTML = `<span class="time-text">${hour}</span><span class="status-text opacity-70">Tersedia</span>`;
+                    btn.innerHTML = `<span class="time-text">${hour}</span><span class="status-text opacity-70">{{ __('Available') }}</span>`;
                     btn.addEventListener('click', () => handleSlotClick(index));
                 }
                 
@@ -374,7 +359,7 @@
             } else if (index > selectedStart) {
                 // Maksimal 5 jam = (index - selectedStart) <= 4
                 if (index - selectedStart >= 5) {
-                    alert('Maksimal booking adalah 5 jam.');
+                    alert('{{ __('Maximum booking is 5 hours.') }}');
                     return;
                 }
 
@@ -390,7 +375,7 @@
                 if (valid) {
                     selectedEnd = index;
                 } else {
-                    alert('Terdapat jam yang sudah di-booking pada rentang waktu tersebut.');
+                    alert('{{ __('There is already a booked time in that time range.') }}');
                     selectedStart = index; // Reset start to the clicked one
                 }
             } else {
@@ -459,7 +444,7 @@
             endTimeInput.value = '';
             selectionInfo.style.display = 'none';
             selectedTimeRange.textContent = '';
-            coachSelect.innerHTML = '<option value="" data-price="0">-- Pilih Waktu Selesai Terlebih Dahulu --</option>';
+            coachSelect.innerHTML = '<option value="" data-price="0">-- {{ __(\'Select End Time First\') }} --</option>';
             coachSelect.disabled = true;
             
             if (gridContainer.children.length > 1) {
@@ -671,7 +656,7 @@
         document.querySelector('form').addEventListener('submit', function(e) {
             if (!startTimeInput.value || !endTimeInput.value) {
                 e.preventDefault();
-                alert('Silakan pilih jam bermain terlebih dahulu.');
+                alert('{{ __('Please select playing time first.') }}');
             }
         });
         

@@ -18,7 +18,7 @@
         <form method="POST" action="{{ route('register.post') }}">
             @csrf
             <div class="form-group">
-                <label for="name" class="form-label">Nama Lengkap</label>
+                <label for="name" class="form-label">{{ __('Full Name') }}</label>
                 <input type="text" id="name" name="name" class="form-input" value="{{ old('name') }}" required autofocus>
                 @error('name') <span class="text-danger text-sm" style="color: #991b1b;">{{ $message }}</span> @enderror
             </div>

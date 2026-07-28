@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Backup & Restore')
+@section('title', __('Backup & Restore'))
 
 @section('content')
 <style>

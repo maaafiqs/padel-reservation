@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
-@section('title', 'Edit Diskon')
+@section('title', __('Edit Discount'))
 
 @section('content')
 <div class="flex justify-between items-center mb-8">
-    <h1 class="text-3xl">Edit Diskon</h1>
-    <a href="{{ route('admin.discounts.index') }}" class="btn btn-outline"><i class="fa-solid fa-arrow-left mr-2"></i> Kembali</a>
+    <h1 class="text-3xl">{{ __('Edit Discount') }}</h1>
+    <a href="{{ route('admin.discounts.index') }}" class="btn btn-outline"><i class="fa-solid fa-arrow-left mr-2"></i> {{ __('Back') }}</a>
 </div>
 
 <div class="card" style="max-width: 600px;">
@@ -17,7 +17,7 @@
             <input type="text" name="code" class="form-input" required value="{{ old('code', $discount->code) }}" style="text-transform: uppercase;">
         </div>
         <div class="form-group">
-            <label class="form-label">Tipe Diskon</label>
+            <label class="form-label">{{ __('Discount Type') }}</label>
             <select name="type" id="discount-type" class="form-input" required>
                 <option value="percentage" {{ old('type', $discount->type ?? 'percentage') == 'percentage' ? 'selected' : '' }}>Persentase (%)</option>
                 <option value="nominal" {{ old('type', $discount->type ?? 'percentage') == 'nominal' ? 'selected' : '' }}>Nominal (Rp)</option>
@@ -37,13 +37,13 @@
             <small class="text-muted">Kosongkan jika berlaku selamanya.</small>
         </div>
         <div class="form-group">
-            <label class="form-label">Status</label>
+            <label class="form-label">{{ __('Status') }}</label>
             <select name="is_active" class="form-input" required>
-                <option value="1" {{ $discount->is_active ? 'selected' : '' }}>Aktif</option>
+                <option value="1" {{ $discount->is_active ? 'selected' : '' }}>{{ __('Active') }}</option>
                 <option value="0" {{ !$discount->is_active ? 'selected' : '' }}>Non-Aktif</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary w-full" style="width: 100%;">Perbarui Diskon</button>
+        <button type="submit" class="btn btn-primary w-full" style="width: 100%;">{{ __('Update Discount') }}</button>
     </form>
 </div>
 

@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 
-@section('title', 'Tambah Barang')
+@section('title', __('Add Item'))
 
 @section('content')
 <div class="flex justify-between items-center mb-8">
-    <h1 class="text-3xl">Tambah Barang</h1>
-    <a href="{{ route('admin.inventories.index') }}" class="btn btn-outline"><i class="fa-solid fa-arrow-left mr-2"></i> Kembali</a>
+    <h1 class="text-3xl">{{ __('Add Item') }}</h1>
+    <a href="{{ route('admin.inventories.index') }}" class="btn btn-outline"><i class="fa-solid fa-arrow-left mr-2"></i> {{ __('Back') }}</a>
 </div>
 
 <div class="card" style="max-width: 600px;">
@@ -17,7 +17,7 @@
             @error('item_code')<span class="text-danger text-sm">{{ $message }}</span>@enderror
         </div>
         <div class="form-group">
-            <label class="form-label">Nama Barang</label>
+            <label class="form-label">{{ __('Item Name') }}</label>
             <input type="text" name="name" class="form-input" required value="{{ old('name') }}">
         </div>
         <div class="form-group">
@@ -29,7 +29,7 @@
             <input type="number" name="stock" class="form-input" required value="{{ old('stock', 0) }}">
         </div>
         <div class="form-group">
-            <label class="form-label">Deskripsi</label>
+            <label class="form-label">{{ __('Description') }}</label>
             <textarea name="description" class="form-input" rows="4">{{ old('description') }}</textarea>
         </div>
         <div class="form-group mb-6">
@@ -41,7 +41,7 @@
                 </div>
             </label>
         </div>
-        <button type="submit" class="btn btn-primary w-full" style="width: 100%;">Simpan Barang</button>
+        <button type="submit" class="btn btn-primary w-full" style="width: 100%;">{{ __('Save Item') }}</button>
     </form>
 </div>
 @endsection

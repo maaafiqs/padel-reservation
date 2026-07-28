@@ -1,16 +1,16 @@
 @extends('layouts.admin')
 
-@section('title', 'Kelola Reservasi')
+@section('title', __('Manage Reservations'))
 
 @section('content')
 <div class="flex justify-between items-center mb-8">
-    <h1 class="text-3xl">Kelola Reservasi</h1>
+    <h1 class="text-3xl">{{ __('Manage Reservations') }}</h1>
 </div>
 
 <div class="card mb-6" style="background-color: var(--background); border: 1px solid var(--border); box-shadow: none;">
     <form action="{{ route('admin.reservations.index') }}" method="GET" class="flex flex-wrap gap-4 items-end">
         <div class="form-group mb-0" style="flex: 1; min-width: 250px;">
-            <label class="form-label text-sm">Cari (ID, Nama Pengguna, Lapangan)</label>
+            <label class="form-label text-sm">{{ __('Search (ID, Username, Court)') }}</label>
             <input type="text" name="search" class="form-input" placeholder="Masukkan kata kunci..." value="{{ request('search') }}">
         </div>
         <div class="form-group mb-0" style="width: 200px;">
@@ -38,11 +38,11 @@
             <thead style="background-color: var(--primary-light);">
                 <tr>
                     <th style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); font-weight: 600; color: var(--text);">ID Booking</th>
-                    <th style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); font-weight: 600; color: var(--text);">Pengguna</th>
-                    <th style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); font-weight: 600; color: var(--text);">Detail Lapangan & Waktu</th>
-                    <th style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); font-weight: 600; color: var(--text);">Total Harga</th>
-                    <th style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); font-weight: 600; color: var(--text);">Status</th>
-                    <th style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); font-weight: 600; color: var(--text); text-align: center;">Aksi</th>
+                    <th style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); font-weight: 600; color: var(--text);">{{ __('User') }}</th>
+                    <th style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); font-weight: 600; color: var(--text);">{{ __('Court Details & Time') }}</th>
+                    <th style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); font-weight: 600; color: var(--text);">{{ __('Total Price') }}</th>
+                    <th style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); font-weight: 600; color: var(--text);">{{ __('Status') }}</th>
+                    <th style="padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); font-weight: 600; color: var(--text); text-align: center;">{{ __('Action') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -68,19 +68,19 @@
                     <td style="padding: 1rem 1.5rem;">
                         @if($res->status === 'pending')
                             @if($res->payment_proof)
-                                <span class="badge badge-warning" style="padding: 0.35rem 0.75rem;">Menunggu Verifikasi</span>
+                                <span class="badge badge-warning" style="padding: 0.35rem 0.75rem;">{{ __('Awaiting Verification') }}</span>
                                 <div class="mt-2">
-                                    <a href="{{ asset('storage/' . $res->payment_proof) }}" target="_blank" class="text-xs text-primary hover:underline font-semibold" style="display: inline-flex; align-items: center; gap: 0.25rem;"><i class="fa-solid fa-image"></i> Lihat Bukti</a>
+                                    <a href="{{ asset('storage/' . $res->payment_proof) }}" target="_blank" class="text-xs text-primary hover:underline font-semibold" style="display: inline-flex; align-items: center; gap: 0.25rem;"><i class="fa-solid fa-image"></i> {{ __('View Proof') }}</a>
                                 </div>
                             @else
-                                <span class="badge badge-warning" style="padding: 0.35rem 0.75rem; opacity: 0.8;">Menunggu Pembayaran</span>
+                                <span class="badge badge-warning" style="padding: 0.35rem 0.75rem; opacity: 0.8;">{{ __('Awaiting Payment') }}</span>
                             @endif
                         @elseif($res->status === 'confirmed')
-                            <span class="badge badge-success" style="padding: 0.35rem 0.75rem;">Confirmed</span>
+                            <span class="badge badge-success" style="padding: 0.35rem 0.75rem;">{{ __('Confirmed') }}</span>
                         @elseif($res->status === 'completed')
-                            <span class="badge badge-primary" style="padding: 0.35rem 0.75rem; background-color: #0284c7; color: white;">Completed</span>
+                            <span class="badge badge-primary" style="padding: 0.35rem 0.75rem; background-color: #0284c7; color: white;">{{ __('Completed') }}</span>
                         @else
-                            <span class="badge" style="padding: 0.35rem 0.75rem; background-color: #fee2e2; color: #991b1b;">Cancelled</span>
+                            <span class="badge" style="padding: 0.35rem 0.75rem; background-color: #fee2e2; color: #991b1b;">{{ __('Cancelled') }}</span>
                         @endif
                     </td>
                     <td style="padding: 1rem 1.5rem;">
@@ -90,7 +90,7 @@
                                     @csrf
                                     @method('PUT')
                                     <input type="hidden" name="status" value="confirmed">
-                                    <button class="btn btn-primary" style="padding: 0.4rem 0.8rem; border-radius: 9999px; font-size: 0.875rem;" title="Konfirmasi Pembayaran"><i class="fa-solid fa-check"></i></button>
+                                    <button class="btn btn-primary" style="padding: 0.4rem 0.8rem; border-radius: 9999px; font-size: 0.875rem;" title="{{ __('Confirm Payment') }}"><i class="fa-solid fa-check"></i></button>
                                 </form>
                             @endif
                             @if($res->status === 'confirmed')
@@ -105,7 +105,7 @@
                             <form action="{{ route('admin.reservations.destroy', $res) }}" method="POST" onsubmit="return confirm('Hapus reservasi ini secara permanen?');">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn" style="padding: 0.4rem 0.8rem; border-radius: 9999px; font-size: 0.875rem; background-color: #fee2e2; color: #991b1b; border: 1px solid #f87171;" title="Hapus"><i class="fa-solid fa-trash"></i></button>
+                                <button class="btn" style="padding: 0.4rem 0.8rem; border-radius: 9999px; font-size: 0.875rem; background-color: #fee2e2; color: #991b1b; border: 1px solid #f87171;" title="{{ __('Delete') }}"><i class="fa-solid fa-trash"></i></button>
                             </form>
                         </div>
                     </td>

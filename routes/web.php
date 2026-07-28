@@ -10,6 +10,8 @@ use App\Http\Controllers\UserProfileController;
 // Public Routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('/lang/{locale}', [\App\Http\Controllers\LanguageController::class, 'switchLang'])->name('lang.switch');
+
 // Authentication Routes
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

@@ -5,26 +5,26 @@
 @section('content')
 <div class="flex justify-between items-center mb-8">
     <h1 class="text-3xl">Tambah Admin Baru</h1>
-    <a href="{{ route('admin.users.index') }}" class="btn btn-outline"><i class="fa-solid fa-arrow-left mr-2"></i> Kembali</a>
+    <a href="{{ route('admin.users.index') }}" class="btn btn-outline"><i class="fa-solid fa-arrow-left mr-2"></i> {{ __('Back') }}</a>
 </div>
 
 <div class="card" style="max-width: 600px;">
     <form action="{{ route('admin.users.store') }}" method="POST">
         @csrf
         <div class="form-group">
-            <label class="form-label">Nama Lengkap</label>
+            <label class="form-label">{{ __('Full Name') }}</label>
             <input type="text" name="name" class="form-input" value="{{ old('name') }}" required>
             @error('name')<span class="text-danger text-sm">{{ $message }}</span>@enderror
         </div>
         
         <div class="form-group">
-            <label class="form-label">Alamat Email</label>
+            <label class="form-label">{{ __('Email Address') }}</label>
             <input type="email" name="email" class="form-input" value="{{ old('email') }}" required>
             @error('email')<span class="text-danger text-sm">{{ $message }}</span>@enderror
         </div>
         
         <div class="form-group">
-            <label class="form-label">Password</label>
+            <label class="form-label">{{ __('Password') }}</label>
             <input type="password" name="password" class="form-input" required minlength="8">
             @error('password')<span class="text-danger text-sm">{{ $message }}</span>@enderror
         </div>

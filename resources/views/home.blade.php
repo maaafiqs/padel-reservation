@@ -133,19 +133,19 @@
         
         <!-- Left: Text Content -->
         <div style="padding-right: 2rem;" data-aos="fade-right">
-            <span style="display: inline-block; padding: 0.5rem 1rem; border-radius: 99px; background-color: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3); margin-bottom: 1.5rem; backdrop-filter: blur(4px);">✨ Pilihan Terbaik 2026</span>
+            <span style="display: inline-block; padding: 0.5rem 1rem; border-radius: 99px; background-color: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3); margin-bottom: 1.5rem; backdrop-filter: blur(4px);">✨ {{ __('Best Choice 2026') }}</span>
             
             <h1 style="color: white; font-size: 4rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; text-shadow: 0 4px 10px rgba(0,0,0,0.5);">
-                Main Padel Semakin<br><span style="color: #3b82f6; text-shadow: 0 4px 15px rgba(59,130,246,0.4);">Mudah & Praktis</span>
+                {{ __('Playing Padel Is Getting') }}<br><span style="color: #3b82f6; text-shadow: 0 4px 15px rgba(59,130,246,0.4);">{{ __('Easier & Practical') }}</span>
             </h1>
             
             <p style="color: rgba(255,255,255,0.9); font-size: 1.25rem; margin-bottom: 2.5rem; max-width: 500px; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">
-                Pesan lapangan, sewa raket, hingga jadwalkan latihan bersama pelatih profesional hanya dalam beberapa klik.
+                {{ __('Book courts, rent rackets, and schedule training with professional coaches in just a few clicks.') }}
             </p>
             
             <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                <a href="#lapangan" class="hero-btn-primary">Pesan Sekarang</a>
-                <a href="#fasilitas" class="hero-btn-outline">Lihat Fasilitas</a>
+                <a href="#lapangan" class="hero-btn-primary">{{ __('Book Now') }}</a>
+                <a href="#fasilitas" class="hero-btn-outline">{{ __('View Facilities') }}</a>
             </div>
         </div>
 
@@ -160,8 +160,8 @@
 <section id="lapangan" class="py-24" style="background-color: var(--surface);">
     <div class="container">
         <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-4xl mb-4">Pilihan Lapangan Kami</h2>
-            <p class="text-muted text-lg max-w-2xl mx-auto">Kami menyediakan lapangan indoor dan outdoor berstandar internasional untuk pengalaman bermain yang maksimal.</p>
+            <h2 class="text-4xl mb-4">{{ __('Our Court Options') }}</h2>
+            <p class="text-muted text-lg max-w-2xl mx-auto">{{ __('We provide international standard indoor and outdoor courts for the best playing experience.') }}</p>
         </div>
         
         <div class="grid grid-cols-3 gap-8">
@@ -175,10 +175,10 @@
                     @endif
                 </div>
                 <div class="flex justify-between items-center mb-2">
-                    <h3 class="text-xl">{{ $court->name }}</h3>
-                    <span class="badge badge-success">Tersedia</span>
+                    <h3 class="text-xl">{{ __($court->name) }}</h3>
+                    <span class="badge badge-success">{{ __('Available') }}</span>
                 </div>
-                <p class="text-muted mb-4">{{ $court->description ?? 'Lapangan ' . $court->type . ' berstandar internasional.' }}</p>
+                <p class="text-muted mb-4">{{ $court->description ? __($court->description) : __('Lapangan ' . $court->type . ' berstandar internasional.') }}</p>
                 <div class="flex justify-between items-center font-semibold">
                     <span class="text-primary text-lg">Rp {{ number_format($court->price_per_hour, 0, ',', '.') }} / Jam</span>
                     <a href="{{ route('user.reservations.create') }}" class="btn btn-primary" style="padding: 0.5rem 1rem;">Booking</a>
@@ -186,7 +186,7 @@
             </div>
             @empty
             <div class="col-span-3 text-center py-8">
-                <p class="text-muted text-lg">Saat ini belum ada lapangan yang tersedia.</p>
+                <p class="text-muted text-lg">{{ __('No courts currently available.') }}</p>
             </div>
             @endforelse
         </div>
@@ -197,25 +197,25 @@
 <section id="fasilitas" class="py-24">
     <div class="container">
         <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-4xl mb-4">Fasilitas Lengkap Kami</h2>
-            <p class="text-muted text-lg max-w-2xl mx-auto">Nikmati kenyamanan bermain dengan fasilitas terbaik yang telah kami siapkan khusus untuk Anda.</p>
+            <h2 class="text-4xl mb-4">{{ __('Our Complete Facilities') }}</h2>
+            <p class="text-muted text-lg max-w-2xl mx-auto">{{ __('Enjoy the comfort of playing with the best facilities we have prepared especially for you.') }}</p>
         </div>
         
         <div class="grid grid-cols-3 gap-8 text-center">
             <div class="card" data-aos="fade-up" data-aos-delay="0">
                 <i class="fa-solid fa-shower text-primary text-4xl mb-4"></i>
-                <h3 class="text-xl mb-2">Loker & Shower</h3>
-                <p class="text-muted">Fasilitas ganti yang bersih, nyaman, dan aman dilengkapi dengan shower air hangat.</p>
+                <h3 class="text-xl mb-2">{{ __('Lockers & Showers') }}</h3>
+                <p class="text-muted">{{ __('Clean, comfortable, and safe changing facilities equipped with warm water showers.') }}</p>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="100">
                 <i class="fa-solid fa-mug-hot text-primary text-4xl mb-4"></i>
-                <h3 class="text-xl mb-2">Cafe & Lounge</h3>
-                <p class="text-muted">Bersantai setelah bermain sambil menikmati berbagai pilihan makanan dan minuman ringan.</p>
+                <h3 class="text-xl mb-2">{{ __('Cafe & Lounge') }}</h3>
+                <p class="text-muted">{{ __('Relax after playing while enjoying a wide selection of food and snacks.') }}</p>
             </div>
             <div class="card" data-aos="fade-up" data-aos-delay="200">
                 <i class="fa-solid fa-shop text-primary text-4xl mb-4"></i>
-                <h3 class="text-xl mb-2">Pro Shop</h3>
-                <p class="text-muted">Sewa atau beli perlengkapan padel terlengkap dengan kualitas terbaik dari berbagai merek.</p>
+                <h3 class="text-xl mb-2">{{ __('Pro Shop') }}</h3>
+                <p class="text-muted">{{ __('Rent or buy complete padel equipment of the highest quality from various brands.') }}</p>
             </div>
         </div>
     </div>
@@ -225,8 +225,8 @@
 <section id="coach" class="py-24" style="background-color: var(--surface);">
     <div class="container">
         <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-4xl mb-4">Pelatih Profesional Kami</h2>
-            <p class="text-muted text-lg max-w-2xl mx-auto">Tingkatkan skill bermain Anda dengan panduan langsung dari para pelatih berpengalaman.</p>
+            <h2 class="text-4xl mb-4">{{ __('Our Professional Coaches') }}</h2>
+            <p class="text-muted text-lg max-w-2xl mx-auto">{{ __('Improve your playing skills with direct guidance from experienced coaches.') }}</p>
         </div>
         
         <div class="grid grid-cols-4 gap-6">
@@ -239,13 +239,13 @@
                         <i class="fa-solid fa-user-tie text-primary text-3xl"></i>
                     @endif
                 </div>
-                <h3 class="text-xl mb-1">{{ $coach->name }}</h3>
-                <p class="text-sm text-primary mb-3 font-semibold">Rp {{ number_format($coach->price_per_hour, 0, ',', '.') }} / Jam</p>
-                <p class="text-muted text-sm">{{ $coach->bio }}</p>
+                <h3 class="text-xl mb-1">{{ __($coach->name) }}</h3>
+                <p class="text-sm text-primary mb-3 font-semibold">Rp {{ number_format($coach->price_per_hour, 0, ',', '.') }} {{ __('/ Hour') }}</p>
+                <p class="text-muted text-sm">{{ __($coach->bio) }}</p>
             </div>
             @empty
             <div class="col-span-4 text-center py-8">
-                <p class="text-muted text-lg">Saat ini belum ada pelatih yang tersedia.</p>
+                <p class="text-muted text-lg">{{ __('No coaches currently available.') }}</p>
             </div>
             @endforelse
         </div>
@@ -256,8 +256,8 @@
 <section id="galeri" class="py-24 bg-white">
     <div class="container">
         <div class="text-center mb-16" data-aos="fade-up">
-            <h2 class="text-4xl mb-4 font-bold">Galeri Padel</h2>
-            <p class="text-muted text-lg max-w-2xl mx-auto">Momen-momen seru dan fasilitas terbaik yang kami sediakan untuk Anda. Jelajahi keseruan bermain padel di tempat kami.</p>
+            <h2 class="text-4xl mb-4 font-bold">{{ __('Padel Gallery') }}</h2>
+            <p class="text-muted text-lg max-w-2xl mx-auto">{{ __('Exciting moments and the best facilities we provide for you. Explore the fun of playing padel at our place.') }}</p>
         </div>
         
         <div class="masonry-gallery">
@@ -287,26 +287,26 @@
 <section class="py-24">
     <div class="container grid grid-cols-2 gap-16 items-center">
         <div data-aos="fade-right">
-            <span class="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">Informasi Terbaru</span>
-            <h2 class="text-4xl mb-6">Dapatkan Diskon Khusus Pengguna Baru!</h2>
-            <p class="text-lg text-muted mb-6">Daftar sekarang dan nikmati diskon hingga 20% untuk reservasi pertama Anda. Kami juga rutin mengadakan turnamen amatir setiap bulan.</p>
+            <span class="text-primary font-bold tracking-wider uppercase text-sm mb-2 block">{{ __('Latest Information') }}</span>
+            <h2 class="text-4xl mb-6">{{ __('Get a Special Discount for New Users!') }}</h2>
+            <p class="text-lg text-muted mb-6">{{ __('Register now and enjoy up to a 20% discount on your first reservation. We also regularly hold amateur tournaments every month.') }}</p>
             <ul class="flex flex-col gap-4 mb-8">
-                <li class="flex items-center gap-3 text-lg"><i class="fa-solid fa-check-circle text-primary"></i> Fasilitas Loker & Shower Gratis</li>
-                <li class="flex items-center gap-3 text-lg"><i class="fa-solid fa-check-circle text-primary"></i> Sewa Raket & Bola Murah</li>
-                <li class="flex items-center gap-3 text-lg"><i class="fa-solid fa-check-circle text-primary"></i> Cafe & Ruang Tunggu Nyaman</li>
+                <li class="flex items-center gap-3 text-lg"><i class="fa-solid fa-check-circle text-primary"></i> {{ __('Free Locker & Shower Facilities') }}</li>
+                <li class="flex items-center gap-3 text-lg"><i class="fa-solid fa-check-circle text-primary"></i> {{ __('Cheap Racket & Ball Rental') }}</li>
+                <li class="flex items-center gap-3 text-lg"><i class="fa-solid fa-check-circle text-primary"></i> {{ __('Comfortable Cafe & Waiting Room') }}</li>
             </ul>
-            <a href="{{ route('register') }}" class="btn btn-primary">Daftar Sekarang</a>
+            <a href="{{ route('register') }}" class="btn btn-primary">{{ __('Register Now') }}</a>
         </div>
         <div class="grid grid-cols-2 gap-4">
             <div class="card bg-primary text-white" style="background-color: var(--primary); color: white;" data-aos="fade-up" data-aos-delay="100">
                 <i class="fa-solid fa-trophy text-4xl mb-4"></i>
-                <h3 class="text-xl text-white mb-2">Turnamen Padel</h3>
-                <p style="color: rgba(255,255,255,0.8)">Ikuti turnamen bulanan kami dan menangkan hadiah menarik.</p>
+                <h3 class="text-xl text-white mb-2">{{ __('Padel Tournaments') }}</h3>
+                <p style="color: rgba(255,255,255,0.8)">{{ __('Join our monthly tournaments and win exciting prizes.') }}</p>
             </div>
             <div class="card" style="margin-top: 2rem;" data-aos="fade-up" data-aos-delay="200">
                 <i class="fa-solid fa-user-tie text-primary text-4xl mb-4"></i>
-                <h3 class="text-xl mb-2">Pelatih Ahli</h3>
-                <p class="text-muted">Tersedia pelatih profesional untuk kelas pemula hingga mahir.</p>
+                <h3 class="text-xl mb-2">{{ __('Expert Coaches') }}</h3>
+                <p class="text-muted">{{ __('Professional coaches available for beginner to advanced classes.') }}</p>
             </div>
         </div>
     </div>

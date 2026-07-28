@@ -18,16 +18,24 @@
     <body class="antialiased">
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
             @if (Route::has('login'))
-                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-                    @auth
-                        <a href="{{ url('/home') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
+                <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10 flex items-center justify-end gap-4">
+                    <div class="flex items-center gap-2 border-r border-gray-300 pr-4 mr-2">
+                        <a href="{{ route('lang.switch', 'en') }}" class="font-semibold {{ app()->getLocale() == 'en' ? 'text-gray-900 dark:text-white underline' : 'text-gray-600 dark:text-gray-400' }} hover:text-gray-900 dark:hover:text-white">EN</a>
+                        <span class="text-gray-500">|</span>
+                        <a href="{{ route('lang.switch', 'id') }}" class="font-semibold {{ app()->getLocale() == 'id' ? 'text-gray-900 dark:text-white underline' : 'text-gray-600 dark:text-gray-400' }} hover:text-gray-900 dark:hover:text-white">ID</a>
+                    </div>
+                    
+                    <div>
+                        @auth
+                            <a href="{{ url('/home') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">{{ __('Home') }}</a>
+                        @else
+                            <a href="{{ route('login') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">{{ __('Log in') }}</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                        @endif
-                    @endauth
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">{{ __('Register') }}</a>
+                            @endif
+                        @endauth
+                    </div>
                 </div>
             @endif
 

@@ -1,30 +1,15 @@
 @extends('layouts.app')
 
-@section('title', 'Pembayaran Reservasi')
+@section('title', __('Reservation Payment'))
 
 @section('content')
 <div class="dashboard-layout">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <h3 class="text-xl mb-6 text-primary">Menu Pengguna</h3>
-        <nav class="sidebar-menu">
-            <a href="{{ route('user.dashboard') }}" class="sidebar-link"><i class="fa-solid fa-gauge"></i> Dashboard</a>
-            <a href="{{ route('user.reservations.create') }}" class="sidebar-link"><i class="fa-solid fa-calendar-plus"></i> Buat Reservasi</a>
-            <a href="{{ route('user.reservations.index') }}" class="sidebar-link active"><i class="fa-solid fa-clock-rotate-left"></i> Riwayat Booking</a>
-            <a href="{{ route('user.profile.edit') }}" class="sidebar-link"><i class="fa-solid fa-user"></i> Profil Saya</a>
-            <form method="POST" action="{{ route('logout') }}" style="margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 1rem;">
-                @csrf
-                <button type="submit" class="sidebar-link text-danger w-full" style="text-align: left; background: none; border: none; cursor: pointer; display: flex; align-items: center; width: 100%; color: #ef4444; gap: 0.75rem;">
-                    <i class="fa-solid fa-right-from-bracket"></i> Logout
-                </button>
-            </form>
-        </nav>
-    </aside>
+    @include('user.partials.sidebar')
 
     <!-- Main Content -->
     <main class="dashboard-content">
         <div class="flex justify-between items-center mb-8">
-            <h1 class="text-3xl">Pembayaran Reservasi</h1>
+            <h1 class="text-3xl">{{ __('Reservation Payment') }}</h1>
         </div>
 
         <div class="grid grid-cols-2 gap-8">
@@ -39,12 +24,12 @@
                 @endphp
                 
                 <div class="flex justify-between mb-3 border-b pb-2">
-                    <span class="text-muted">Tanggal</span>
+                    <span class="text-muted">{{ __('Date') }}</span>
                     <span class="font-medium">{{ \Carbon\Carbon::parse($reservation->reservation_date)->translatedFormat('d F Y') }}</span>
                 </div>
                 
                 <div class="flex justify-between mb-3 border-b pb-2">
-                    <span class="text-muted">Waktu</span>
+                    <span class="text-muted">{{ __('Time') }}</span>
                     <span class="font-medium">{{ \Carbon\Carbon::parse($reservation->start_time)->format('H:i') }} - {{ \Carbon\Carbon::parse($reservation->end_time)->format('H:i') }} ({{ $durationInHours }} Jam)</span>
                 </div>
 
@@ -72,7 +57,7 @@
 
                 @if($reservation->inventories->count() > 0)
                 <div class="mt-4 mb-2">
-                    <span class="text-muted font-semibold">Sewa Perlengkapan:</span>
+                    <span class="text-muted font-semibold">{{ __('Equipment Rental:') }}</span>
                     @foreach($reservation->inventories as $inv)
                         <div class="flex justify-between mt-2 text-sm">
                             <span>{{ $inv->name }} (x{{ $inv->pivot->quantity }})</span>
@@ -141,9 +126,9 @@
                     </div>
 
                     <div class="flex justify-end gap-4 mt-8">
-                        <a href="{{ route('user.dashboard') }}" class="btn btn-outline">Batal</a>
+                        <a href="{{ route('user.dashboard') }}" class="btn btn-outline">{{ __('Cancel') }}</a>
                         <button type="submit" class="btn btn-primary">
-                            <i class="fa-solid fa-upload mr-2"></i> Konfirmasi Pembayaran
+                            <i class="fa-solid fa-upload mr-2"></i> {{ __('Confirm Payment') }}
                         </button>
                     </div>
                 </form>
