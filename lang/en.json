@@ -344,5 +344,13 @@
     "Kelola Pengguna & Admin": "Manage Users & Admins",
     "Tambah Admin": "Add Admin",
     "Registration Date": "Registration Date",
-    "Selected:": "Selected:"
+    "Selected:": "Selected:",
+    "Booking Pass": "Booking Pass",
+    "Booking Confirmation": "Booking Confirmation",
+    "Show this ticket to the receptionist upon arrival.": "Show this ticket to the receptionist upon arrival.",
+    "Reservation Status": "Reservation Status",
+    "Payment Completed": "Payment Completed",
+    "Payment Pending": "Payment Pending",
+    "Booking Cancelled": "Booking Cancelled",
+    "Print Ticket": "Print Ticket"
 }

@@ -344,5 +344,13 @@
     "Kelola Pengguna & Admin": "Kelola Pengguna & Admin",
     "Tambah Admin": "Tambah Admin",
     "Registration Date": "Tgl Daftar",
-    "Selected:": "Terpilih:"
+    "Selected:": "Terpilih:",
+    "Booking Pass": "Tiket Reservasi",
+    "Booking Confirmation": "Konfirmasi Pemesanan",
+    "Show this ticket to the receptionist upon arrival.": "Tunjukkan tiket ini kepada resepsionis saat kedatangan.",
+    "Reservation Status": "Status Reservasi",
+    "Payment Completed": "Pembayaran Selesai",
+    "Payment Pending": "Menunggu Pembayaran",
+    "Booking Cancelled": "Pemesanan Dibatalkan",
+    "Print Ticket": "Cetak Tiket"
 }
