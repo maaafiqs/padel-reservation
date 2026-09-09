@@ -1,0 +1,7 @@
+/vendor
+/node_modules
+/storage/app/backups
+/database/*.sqlite
+/database/*.sqlite-journal
+.git
+.env
