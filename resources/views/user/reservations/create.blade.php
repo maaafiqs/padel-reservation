@@ -92,7 +92,7 @@
                 <div class="form-group mb-6">
                     <label for="court_id" class="form-label">{{ __('Select Court') }}</label>
                     <select name="court_id" id="court_id" class="form-input" required>
-                        <option value="" data-price="0">-- {{ __(\'Select Court\') }} --</option>
+                        <option value="" data-price="0">-- {{ __('Select Court') }} --</option>
                         @foreach($courts as $court)
                             <option value="{{ $court->id }}" data-price="{{ $court->price_per_hour }}" {{ old('court_id') == $court->id ? 'selected' : '' }}>
                                 {{ $court->name }} (Rp {{ number_format($court->price_per_hour, 0, ',', '.') }}/jam)
@@ -121,9 +121,9 @@
                     
                     <div id="selection-info" class="mt-4 p-3 bg-primary-light rounded-md text-primary flex justify-between items-center" style="display: none;">
                         <div>
-                            <strong>{{ __(\'Selected:\') }}</strong> <span id="selected-time-range"></span>
+                            <strong>{{ __('Selected:') }}</strong> <span id="selected-time-range"></span>
                         </div>
-                        <button type="button" id="btn-reset-time" class="btn btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.875rem; background-color: white;">{{ __(\'Reset Selection\') }}</button>
+                        <button type="button" id="btn-reset-time" class="btn btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.875rem; background-color: white;">{{ __('Reset Selection') }}</button>
                     </div>
                 </div>
 
@@ -267,7 +267,7 @@
             const dateStr = dateInput.value;
 
             if (!courtId || !dateStr) {
-                gridContainer.innerHTML = '<div class="col-span-full text-center p-6 bg-gray-50 border border-dashed rounded-md text-muted" style="grid-column: 1 / -1;">{{ __(\'Select court and date first to see available hours.\') }}</div>';
+                gridContainer.innerHTML = '<div class="col-span-full text-center p-6 bg-gray-50 border border-dashed rounded-md text-muted" style="grid-column: 1 / -1;">{{ __('Select court and date first to see available hours.') }}</div>';
                 resetSelection();
                 return;
             }
@@ -275,7 +275,7 @@
             loadingIndicator.style.display = 'block';
             gridContainer.innerHTML = '';
             resetSelection();
-            coachSelect.innerHTML = '<option value="">-- {{ __(\'Select End Time First\') }} --</option>';
+            coachSelect.innerHTML = '<option value="">-- {{ __('Select End Time First') }} --</option>';
             coachSelect.disabled = true;
 
             fetch(`/user/api/booked-slots?court_id=${courtId}&date=${dateStr}`)
@@ -444,7 +444,7 @@
             endTimeInput.value = '';
             selectionInfo.style.display = 'none';
             selectedTimeRange.textContent = '';
-            coachSelect.innerHTML = '<option value="" data-price="0">-- {{ __(\'Select End Time First\') }} --</option>';
+            coachSelect.innerHTML = '<option value="" data-price="0">-- {{ __('Select End Time First') }} --</option>';
             coachSelect.disabled = true;
             
             if (gridContainer.children.length > 1) {
