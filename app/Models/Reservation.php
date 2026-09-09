@@ -44,4 +44,29 @@ class Reservation extends Model
     {
         return $this->belongsToMany(Inventory::class)->withPivot('quantity', 'price');
     }
+
+    public function scopePending($query)
+    {
+        return $query->where('status', 'pending');
+    }
+
+    public function scopeConfirmed($query)
+    {
+        return $query->where('status', 'confirmed');
+    }
+
+    public function scopeToday($query)
+    {
+        return $query->whereDate('reservation_date', today());
+    }
+
+    public function isPending(): bool
+    {
+        return $this->status === 'pending';
+    }
+
+    public function isConfirmed(): bool
+    {
+        return $this->status === 'confirmed';
+    }
 }
