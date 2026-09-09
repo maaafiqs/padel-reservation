@@ -17,3 +17,17 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+/.gemini
+/.cursor
+
+# SQLite Databases & Backups
+/database/*.sqlite
+/database/*.sqlite-journal
+/storage/app/backups/*
+/storage/app/public/payments/*
+/storage/logs/*.log
+
+# OS & Temporary files
+.DS_Store
+Thumbs.db
+Desktop.ini
