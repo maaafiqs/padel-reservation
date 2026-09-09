@@ -55,25 +55,25 @@ Dukungan penuh bilingual (**Bahasa Indonesia** dan **English**) yang dapat digan
 
 ```mermaid
 flowchart TD
-    A[Pengguna Buka Web] --> B{Sudah Login?}
-    B -- Belum --> C[Halaman Login / Register]
-    B -- Sudah --> D[Dasbor Pengguna]
+    A["Pengguna Buka Web"] --> B{"Sudah Login?"}
+    B -- "Belum" --> C["Halaman Login / Register"]
+    B -- "Sudah" --> D["Dasbor Pengguna"]
     
-    D --> E[Pilih Lapangan & Tanggal]
-    E --> F[API Pengecekan Slot Tersedia]
-    F --> G[Pilih Jam Main & Durasi]
-    G --> H[Pilih Pelatih Tambahan (Opsional)]
-    H --> I[Pilih Sewa/Beli Inventaris (Opsional)]
-    I --> J[Klaim Kode Diskon (Opsional)]
-    J --> K[Submit Reservasi]
+    D --> E["Pilih Lapangan & Tanggal"]
+    E --> F["API Pengecekan Slot Tersedia"]
+    F --> G["Pilih Jam Main & Durasi"]
+    G --> H["Pilih Pelatih Tambahan (Opsional)"]
+    H --> I["Pilih Sewa / Beli Inventaris (Opsional)"]
+    I --> J["Klaim Kode Diskon (Opsional)"]
+    J --> K["Submit Reservasi"]
     
-    K --> L[Upload Bukti Transfer]
-    L --> M[Admin Meninjau Bukti Bayar]
-    M -- Diterima --> N[Status: Confirmed]
-    M -- Ditolak --> O[Status: Rejected]
+    K --> L["Upload Bukti Transfer"]
+    L --> M["Admin Meninjau Bukti Bayar"]
+    M -- "Diterima" --> N["Status: Confirmed"]
+    M -- "Ditolak" --> O["Status: Rejected"]
     
-    N --> P[Unduh / Cetak Tiket Digital]
-    N --> Q[Selesai Main -> Auto Restock Inventaris]
+    N --> P["Unduh / Cetak Tiket Digital"]
+    N --> Q["Selesai Main - Auto Restock Inventaris"]
 ```
 
 ---
@@ -94,16 +94,16 @@ erDiagram
         string name
         string email
         string password
-        string role "admin / user"
+        string role
         string phone
     }
 
     COURTS {
         bigint id PK
         string name
-        string type "Indoor / Outdoor"
+        string type
         decimal price_per_hour
-        string status "available / maintenance"
+        string status
     }
 
     COACHES {
@@ -134,7 +134,7 @@ erDiagram
         time end_time
         decimal total_price
         decimal final_price
-        string status "pending / confirmed / completed / cancelled"
+        string status
         string payment_proof
     }
 ```
