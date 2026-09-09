@@ -23,7 +23,7 @@ class DummyDataSeeder extends Seeder
             ['name' => 'VIP Glass Court', 'description' => 'Lapangan dengan dinding full kaca khusus untuk VIP member.', 'type' => 'Indoor', 'price_per_hour' => 350000, 'status' => 'maintenance'],
         ];
         foreach ($courts as $court) {
-            Court::create($court);
+            Court::updateOrCreate(['name' => $court['name']], $court);
         }
 
         // 5 Coaches
@@ -35,19 +35,19 @@ class DummyDataSeeder extends Seeder
             ['name' => 'Coach Ricky (Pro)', 'bio' => 'Pelatih level advanced bersertifikasi internasional.', 'price_per_hour' => 250000, 'capacity' => 2, 'phone' => '081234567805', 'is_available' => false],
         ];
         foreach ($coaches as $coach) {
-            Coach::create($coach);
+            Coach::updateOrCreate(['name' => $coach['name']], $coach);
         }
 
         // 5 Inventories
         $inventories = [
-            ['name' => 'Raket Padel Babolat (Sewa)', 'description' => 'Raket padel merek Babolat untuk disewa per sesi.', 'price' => 50000, 'stock' => 10],
-            ['name' => 'Raket Padel Head (Sewa)', 'description' => 'Raket padel merek Head.', 'price' => 45000, 'stock' => 15],
-            ['name' => 'Bola Padel (Slop)', 'description' => 'Bola padel isi 3 baru untuk dibeli.', 'price' => 120000, 'stock' => 50],
-            ['name' => 'Handgrip Raket', 'description' => 'Grip tambahan untuk kenyamanan.', 'price' => 30000, 'stock' => 100],
-            ['name' => 'Minuman Isotonik', 'description' => 'Minuman dingin penambah ion tubuh.', 'price' => 15000, 'stock' => 200],
+            ['item_code' => 'INV-001', 'name' => 'Raket Padel Babolat (Sewa)', 'description' => 'Raket padel merek Babolat untuk disewa per sesi.', 'price' => 50000, 'stock' => 10, 'is_consumable' => false],
+            ['item_code' => 'INV-002', 'name' => 'Raket Padel Head (Sewa)', 'description' => 'Raket padel merek Head untuk latihan dan turnamen.', 'price' => 45000, 'stock' => 15, 'is_consumable' => false],
+            ['item_code' => 'INV-003', 'name' => 'Bola Padel (Slop)', 'description' => 'Bola padel isi 3 baru berstandar turnamen internasional.', 'price' => 120000, 'stock' => 50, 'is_consumable' => true],
+            ['item_code' => 'INV-004', 'name' => 'Handgrip Raket', 'description' => 'Grip tambahan anti-slip untuk kenyamanan bermain.', 'price' => 30000, 'stock' => 100, 'is_consumable' => true],
+            ['item_code' => 'INV-005', 'name' => 'Minuman Isotonik', 'description' => 'Minuman dingin penambah ion tubuh dan hidrasi.', 'price' => 15000, 'stock' => 200, 'is_consumable' => true],
         ];
         foreach ($inventories as $inv) {
-            Inventory::create($inv);
+            Inventory::updateOrCreate(['item_code' => $inv['item_code']], $inv);
         }
 
         // 5 Announcements
@@ -59,19 +59,19 @@ class DummyDataSeeder extends Seeder
             ['title' => 'Coach Baru Bergabung', 'content' => 'Sambut Coach Sarah yang siap membantu kalian dari tingkat dasar. Booking sekarang!', 'is_active' => false],
         ];
         foreach ($announcements as $ann) {
-            Announcement::create($ann);
+            Announcement::updateOrCreate(['title' => $ann['title']], $ann);
         }
 
         // 5 Discounts
         $discounts = [
-            ['code' => 'WELCOME50', 'percentage' => 50, 'valid_until' => Carbon::now()->addDays(30), 'is_active' => true],
-            ['code' => 'WEEKEND20', 'percentage' => 20, 'valid_until' => Carbon::now()->addDays(60), 'is_active' => true],
-            ['code' => 'NIGHTOWL15', 'percentage' => 15, 'valid_until' => Carbon::now()->addDays(90), 'is_active' => true],
-            ['code' => 'STUDENT10', 'percentage' => 10, 'valid_until' => null, 'is_active' => true],
-            ['code' => 'EXPIRED5', 'percentage' => 5, 'valid_until' => Carbon::now()->subDays(5), 'is_active' => false],
+            ['code' => 'WELCOME50', 'type' => 'percentage', 'percentage' => 50, 'nominal_amount' => null, 'valid_until' => Carbon::now()->addDays(30), 'is_active' => true],
+            ['code' => 'WEEKEND20', 'type' => 'percentage', 'percentage' => 20, 'nominal_amount' => null, 'valid_until' => Carbon::now()->addDays(60), 'is_active' => true],
+            ['code' => 'POTONGAN50RB', 'type' => 'nominal', 'percentage' => null, 'nominal_amount' => 50000, 'valid_until' => Carbon::now()->addDays(45), 'is_active' => true],
+            ['code' => 'STUDENT10', 'type' => 'percentage', 'percentage' => 10, 'nominal_amount' => null, 'valid_until' => null, 'is_active' => true],
+            ['code' => 'EXPIRED5', 'type' => 'percentage', 'percentage' => 5, 'nominal_amount' => null, 'valid_until' => Carbon::now()->subDays(5), 'is_active' => false],
         ];
         foreach ($discounts as $disc) {
-            Discount::create($disc);
+            Discount::updateOrCreate(['code' => $disc['code']], $disc);
         }
     }
 }
