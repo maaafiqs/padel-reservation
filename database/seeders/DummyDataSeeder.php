@@ -14,13 +14,20 @@ class DummyDataSeeder extends Seeder
 {
     public function run()
     {
-        // 5 Courts
+        // 12 Courts (Minimal 10 items)
         $courts = [
-            ['name' => 'Indoor Pro Court A', 'description' => 'Lapangan indoor profesional dengan lantai khusus padel kualitas turnamen.', 'type' => 'Indoor', 'price_per_hour' => 250000, 'status' => 'available'],
-            ['name' => 'Indoor Pro Court B', 'description' => 'Lapangan indoor reguler untuk latihan maupun bertanding.', 'type' => 'Indoor', 'price_per_hour' => 200000, 'status' => 'available'],
-            ['name' => 'Outdoor Skyline Court', 'description' => 'Lapangan outdoor dengan pemandangan kota. Seru dimainkan sore hari.', 'type' => 'Outdoor', 'price_per_hour' => 150000, 'status' => 'available'],
-            ['name' => 'Outdoor Sunset Court', 'description' => 'Lapangan padel outdoor standar.', 'type' => 'Outdoor', 'price_per_hour' => 150000, 'status' => 'available'],
-            ['name' => 'VIP Glass Court', 'description' => 'Lapangan dengan dinding full kaca khusus untuk VIP member.', 'type' => 'Indoor', 'price_per_hour' => 350000, 'status' => 'maintenance'],
+            ['name' => 'Center Court Pro (Arena 1)', 'description' => 'Lapangan utama berstandar World Padel Tour dengan lantai karpet Mondo Supercourt XN dan dinding full tempered glass 12mm.', 'type' => 'Indoor', 'price_per_hour' => 280000, 'status' => 'available'],
+            ['name' => 'Indoor Panoramic Court A (Arena 2)', 'description' => 'Lapangan indoor ber-AC dengan konstruksi tanpa tiang sudut untuk visibilitas 360 derajat terbaik.', 'type' => 'Indoor', 'price_per_hour' => 250000, 'status' => 'available'],
+            ['name' => 'Indoor Panoramic Court B (Arena 3)', 'description' => 'Lapangan indoor berstandar turnamen, dilengkapi sistem peredam akustik dan ventilasi modern.', 'type' => 'Indoor', 'price_per_hour' => 250000, 'status' => 'available'],
+            ['name' => 'Sunset Skyline Court 1 (Arena 4)', 'description' => 'Lapangan outdoor dengan pemandangan cakrawala kota yang menawan saat sore menjelang malam hari.', 'type' => 'Outdoor', 'price_per_hour' => 180000, 'status' => 'available'],
+            ['name' => 'Sunset Skyline Court 2 (Arena 5)', 'description' => 'Lapangan outdoor dengan pelindung angin (windbreak mesh) dan rumput sintetis monofilamen premium.', 'type' => 'Outdoor', 'price_per_hour' => 180000, 'status' => 'available'],
+            ['name' => 'Rooftop Arena Alpha (Arena 6)', 'description' => 'Sensasi bermain padel di rooftop lantai 5 dengan sirkulasi udara sejuk dan lampu LED anti-glare.', 'type' => 'Outdoor', 'price_per_hour' => 200000, 'status' => 'available'],
+            ['name' => 'Rooftop Arena Beta (Arena 7)', 'description' => 'Lapangan rooftop eksklusif dengan area lounge santai di pinggir lapangan dan spot foto ikonik.', 'type' => 'Outdoor', 'price_per_hour' => 200000, 'status' => 'available'],
+            ['name' => 'Grand Slam Court (Arena 8)', 'description' => 'Lapangan indoor dengan ketinggian ceiling 12 meter bebas hambatan untuk pukulan lob dan smash tinggi.', 'type' => 'Indoor', 'price_per_hour' => 260000, 'status' => 'available'],
+            ['name' => 'Family & Beginner Court (Arena 9)', 'description' => 'Didesain khusus untuk pemula dan keluarga dengan kecepatan pantul bola yang ramah latihan.', 'type' => 'Indoor', 'price_per_hour' => 160000, 'status' => 'available'],
+            ['name' => 'VIP Glass Pavilion (Arena 10)', 'description' => 'Lapangan privat VIP ber-AC lengkap dengan akses ruang ganti pribadi, lounge eksklusif, dan smart scoreboard.', 'type' => 'Indoor', 'price_per_hour' => 350000, 'status' => 'available'],
+            ['name' => 'Championship Tour Court (Arena 11)', 'description' => 'Lapangan outdoor kompetisi resmi dengan tribun penonton dan kursi wasit turnamen profesional.', 'type' => 'Outdoor', 'price_per_hour' => 220000, 'status' => 'available'],
+            ['name' => 'Training & Drill Court (Arena 12)', 'description' => 'Lapangan khusus sesi latihan drill teknik, dilengkapi mesin pelontar bola otomatis (dalam pemeliharaan berkala).', 'type' => 'Indoor', 'price_per_hour' => 190000, 'status' => 'maintenance'],
         ];
         foreach ($courts as $court) {
             Court::updateOrCreate(['name' => $court['name']], $court);
@@ -38,13 +45,22 @@ class DummyDataSeeder extends Seeder
             Coach::updateOrCreate(['name' => $coach['name']], $coach);
         }
 
-        // 5 Inventories
+        // 14 Inventories (Minimal 10 items)
         $inventories = [
-            ['item_code' => 'INV-001', 'name' => 'Raket Padel Babolat (Sewa)', 'description' => 'Raket padel merek Babolat untuk disewa per sesi.', 'price' => 50000, 'stock' => 10, 'is_consumable' => false],
-            ['item_code' => 'INV-002', 'name' => 'Raket Padel Head (Sewa)', 'description' => 'Raket padel merek Head untuk latihan dan turnamen.', 'price' => 45000, 'stock' => 15, 'is_consumable' => false],
-            ['item_code' => 'INV-003', 'name' => 'Bola Padel (Slop)', 'description' => 'Bola padel isi 3 baru berstandar turnamen internasional.', 'price' => 120000, 'stock' => 50, 'is_consumable' => true],
-            ['item_code' => 'INV-004', 'name' => 'Handgrip Raket', 'description' => 'Grip tambahan anti-slip untuk kenyamanan bermain.', 'price' => 30000, 'stock' => 100, 'is_consumable' => true],
-            ['item_code' => 'INV-005', 'name' => 'Minuman Isotonik', 'description' => 'Minuman dingin penambah ion tubuh dan hidrasi.', 'price' => 15000, 'stock' => 200, 'is_consumable' => true],
+            ['item_code' => 'INV-001', 'name' => 'Raket Padel Babolat Technical Viper (Sewa)', 'description' => 'Raket padel profesional kelas atas merek Babolat untuk disewa per sesi (fokus power & finishing eksplosif).', 'price' => 50000, 'stock' => 15, 'is_consumable' => false],
+            ['item_code' => 'INV-002', 'name' => 'Raket Padel Bullpadel Vertex 03 (Sewa)', 'description' => 'Raket padel merek Bullpadel dengan tekstur kasar Topspin untuk kontrol bola dan spin tajam.', 'price' => 50000, 'stock' => 15, 'is_consumable' => false],
+            ['item_code' => 'INV-003', 'name' => 'Raket Padel Head Speed Pro (Sewa)', 'description' => 'Raket seimbang (all-around) dengan sensasi sentuhan empuk dan kontrol tinggi di net.', 'price' => 45000, 'stock' => 20, 'is_consumable' => false],
+            ['item_code' => 'INV-004', 'name' => 'Raket Padel Wilson Blade V2 (Sewa)', 'description' => 'Raket fleksibel dengan sweet spot lebar, sangat bersahabat untuk pemain intermediate.', 'price' => 45000, 'stock' => 20, 'is_consumable' => false],
+            ['item_code' => 'INV-005', 'name' => 'Raket Padel Kuikma PR 990 (Sewa Pemula)', 'description' => 'Raket sewa ringan dengan tingkat toleransi kesalahan tinggi, ideal untuk pemula.', 'price' => 35000, 'stock' => 25, 'is_consumable' => false],
+            ['item_code' => 'INV-006', 'name' => 'Bola Padel Head Padel Pro (Slop isi 3)', 'description' => 'Bola resmi Federasi Padel Internasional dengan durabilitas tinggi dan pantulan presisi.', 'price' => 110000, 'stock' => 60, 'is_consumable' => true],
+            ['item_code' => 'INV-007', 'name' => 'Bola Padel Bullpadel Premium Pro (Slop isi 3)', 'description' => 'Bola padel berkecepatan tinggi dengan karet bertekanan turnamen kompetitif.', 'price' => 120000, 'stock' => 50, 'is_consumable' => true],
+            ['item_code' => 'INV-008', 'name' => 'Overgrip Wilson Pro Comfort (Pack isi 3)', 'description' => 'Grip tambahan lembut anti-licin dengan daya serap keringat maksimal.', 'price' => 45000, 'stock' => 80, 'is_consumable' => true],
+            ['item_code' => 'INV-009', 'name' => 'Handgrip ShockOut Anti-Vibration', 'description' => 'Grip khusus penyerap getaran benturan untuk pencegahan cedera tennis elbow.', 'price' => 65000, 'stock' => 40, 'is_consumable' => true],
+            ['item_code' => 'INV-010', 'name' => 'Minuman Isotonik Pocari Sweat 500ml', 'description' => 'Minuman pengganti ion tubuh dingin untuk rehidrasi cepat selama pertandingan.', 'price' => 12000, 'stock' => 150, 'is_consumable' => true],
+            ['item_code' => 'INV-011', 'name' => 'Hydro Coco Pure Coconut Water 330ml', 'description' => 'Air kelapa murni tanpa pengawet kaya elektrolit alami untuk stamina dan kesegaran.', 'price' => 15000, 'stock' => 100, 'is_consumable' => true],
+            ['item_code' => 'INV-012', 'name' => 'Air Mineral Pristine 8+ 600ml', 'description' => 'Air mineral alkali dingin berkualitas tinggi menjaga keseimbangan hidrasi tubuh.', 'price' => 8000, 'stock' => 200, 'is_consumable' => true],
+            ['item_code' => 'INV-013', 'name' => 'Handuk Olahraga Microfiber Padel Arena', 'description' => 'Handuk cepat kering berlogo eksklusif Padel Arena, lembut dan nyaman dipakai.', 'price' => 35000, 'stock' => 75, 'is_consumable' => true],
+            ['item_code' => 'INV-014', 'name' => 'Wristband Sweatband Padel Arena (Sepasang)', 'description' => 'Gelang tangan elastis penyerap keringat menjaga cengkeraman telapak tangan tetap kering.', 'price' => 25000, 'stock' => 60, 'is_consumable' => true],
         ];
         foreach ($inventories as $inv) {
             Inventory::updateOrCreate(['item_code' => $inv['item_code']], $inv);
