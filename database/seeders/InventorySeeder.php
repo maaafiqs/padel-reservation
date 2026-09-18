@@ -12,6 +12,9 @@ class InventorySeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Inventory::factory()->count(50)->create();
+        // Inventories are curated with unique item codes in DummyDataSeeder
+        if (\App\Models\Inventory::count() === 0) {
+            $this->call(DummyDataSeeder::class);
+        }
     }
 }
