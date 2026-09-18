@@ -160,15 +160,15 @@ Setelah menjalankan seeder, Anda dapat langsung masuk menggunakan akun-akun beri
 | **Super Admin** | Admin Padel Arena | `admin@maaafiqspadel.com` | `password` | Akses penuh dashboard, kelola seluruh data, backup & restore |
 | **Staff Kasir** | Staff Operator & Kasir | `staff@maaafiqspadel.com` | `password` | Akses admin panel, verifikasi pembayaran, cek stok lapangan |
 | **Member Demo** | Pengguna Demo | `user@maaafiqspadel.com` | `password` | Pemesanan lapangan, sewa raket, upload transfer, cetak tiket |
-| **Customer 1** | Budi Santoso | `budi.santoso@gmail.com` | `password` | Akun pelanggan aktif |
-| **Customer 2** | Siti Aminah | `siti.aminah@gmail.com` | `password` | Akun pelanggan aktif |
-| **Customer 3** | Kevin Wijaya | `kevin.wijaya@gmail.com` | `password` | Akun pelanggan aktif |
-| **Customer 4** | Amanda Putri | `amanda.putri@gmail.com` | `password` | Akun pelanggan aktif |
-| **Customer 5** | Reza Rahadian | `reza.rahadian@gmail.com` | `password` | Akun pelanggan aktif |
-| **Customer 6** | Clara Tan | `clara.tan@gmail.com` | `password` | Akun pelanggan aktif |
-| **Customer 7** | Fajar Alfian | `fajar.alfian@gmail.com` | `password` | Akun pelanggan aktif |
-| **Customer 8** | Greysia Polii | `greysia.polii@gmail.com` | `password` | Akun pelanggan aktif |
-| **Customer 9** | Marcus Gideon | `marcus.gideon@gmail.com` | `password` | Akun pelanggan aktif |
+| **Customer 1** | Budi Santoso | `budi.santoso@example.com` | `password` | Akun pelanggan aktif |
+| **Customer 2** | Siti Aminah | `siti.aminah@example.com` | `password` | Akun pelanggan aktif |
+| **Customer 3** | Kevin Wijaya | `kevin.wijaya@example.com` | `password` | Akun pelanggan aktif |
+| **Customer 4** | Amanda Putri | `amanda.putri@example.com` | `password` | Akun pelanggan aktif |
+| **Customer 5** | Reza Rahadian | `reza.rahadian@example.com` | `password` | Akun pelanggan aktif |
+| **Customer 6** | Clara Tan | `clara.tan@example.com` | `password` | Akun pelanggan aktif |
+| **Customer 7** | Fajar Alfian | `fajar.alfian@example.com` | `password` | Akun pelanggan aktif |
+| **Customer 8** | Greysia Polii | `greysia.polii@example.com` | `password` | Akun pelanggan aktif |
+| **Customer 9** | Marcus Gideon | `marcus.gideon@example.com` | `password` | Akun pelanggan aktif |
 
 > 💡 *Semua akun di atas menggunakan password default: `password`.*
 

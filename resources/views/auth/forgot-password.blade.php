@@ -33,7 +33,7 @@
                 <label for="email" class="form-label">Email</label>
                 <div class="input-with-icon relative">
                     <i class="fa-regular fa-envelope absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
-                    <input type="email" name="email" id="email" class="form-input" style="padding-left: 2.5rem;" required autofocus value="{{ old('email') }}" placeholder="Contoh: budi@gmail.com">
+                    <input type="email" name="email" id="email" class="form-input" style="padding-left: 2.5rem;" required autofocus value="{{ old('email') }}" placeholder="Contoh: user@example.com">
                 </div>
             </div>
 

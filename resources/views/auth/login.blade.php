@@ -221,7 +221,7 @@
                 <div class="demo-account-credentials">
                     <div class="demo-cred-line">
                         <i class="fa-regular fa-envelope text-muted mr-1.5"></i>
-                        <code>budi.santoso@gmail.com</code>
+                        <code>budi.santoso@example.com</code>
                     </div>
                     <div class="demo-cred-line">
                         <i class="fa-solid fa-lock text-muted mr-1.5"></i>
@@ -230,10 +230,10 @@
                 </div>
                 <p class="demo-account-desc">Akun member aktif dengan riwayat pemesanan lapangan yang telah terkonfirmasi.</p>
                 <div class="demo-account-actions">
-                    <button type="button" class="btn-select-account btn-member" onclick="selectAccount('budi.santoso@gmail.com', 'password', 'Budi Santoso')">
+                    <button type="button" class="btn-select-account btn-member" onclick="selectAccount('budi.santoso@example.com', 'password', 'Budi Santoso')">
                         <i class="fa-solid fa-pencil mr-1.5"></i> Isi Formulir
                     </button>
-                    <button type="button" class="btn-select-account btn-member-direct" onclick="selectAccount('budi.santoso@gmail.com', 'password', 'Budi Santoso', true)">
+                    <button type="button" class="btn-select-account btn-member-direct" onclick="selectAccount('budi.santoso@example.com', 'password', 'Budi Santoso', true)">
                         <i class="fa-solid fa-arrow-right-to-bracket mr-1.5"></i> Masuk Langsung
                     </button>
                 </div>

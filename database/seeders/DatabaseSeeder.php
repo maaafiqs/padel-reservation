@@ -35,15 +35,15 @@ class DatabaseSeeder extends Seeder
         // Regular Member / User Accounts (Minimal 10 accounts)
         $users = [
             ['name' => 'Pengguna Demo', 'email' => 'user@maaafiqspadel.com', 'password' => Hash::make('password'), 'role' => 'user'],
-            ['name' => 'Budi Santoso', 'email' => 'budi.santoso@gmail.com', 'password' => Hash::make('password'), 'role' => 'user'],
-            ['name' => 'Siti Aminah', 'email' => 'siti.aminah@gmail.com', 'password' => Hash::make('password'), 'role' => 'user'],
-            ['name' => 'Kevin Wijaya', 'email' => 'kevin.wijaya@gmail.com', 'password' => Hash::make('password'), 'role' => 'user'],
-            ['name' => 'Amanda Putri', 'email' => 'amanda.putri@gmail.com', 'password' => Hash::make('password'), 'role' => 'user'],
-            ['name' => 'Reza Rahadian', 'email' => 'reza.rahadian@gmail.com', 'password' => Hash::make('password'), 'role' => 'user'],
-            ['name' => 'Clara Tan', 'email' => 'clara.tan@gmail.com', 'password' => Hash::make('password'), 'role' => 'user'],
-            ['name' => 'Fajar Alfian', 'email' => 'fajar.alfian@gmail.com', 'password' => Hash::make('password'), 'role' => 'user'],
-            ['name' => 'Greysia Polii', 'email' => 'greysia.polii@gmail.com', 'password' => Hash::make('password'), 'role' => 'user'],
-            ['name' => 'Marcus Fernaldi Gideon', 'email' => 'marcus.gideon@gmail.com', 'password' => Hash::make('password'), 'role' => 'user'],
+            ['name' => 'Budi Santoso', 'email' => 'budi.santoso@example.com', 'password' => Hash::make('password'), 'role' => 'user'],
+            ['name' => 'Siti Aminah', 'email' => 'siti.aminah@example.com', 'password' => Hash::make('password'), 'role' => 'user'],
+            ['name' => 'Kevin Wijaya', 'email' => 'kevin.wijaya@example.com', 'password' => Hash::make('password'), 'role' => 'user'],
+            ['name' => 'Amanda Putri', 'email' => 'amanda.putri@example.com', 'password' => Hash::make('password'), 'role' => 'user'],
+            ['name' => 'Reza Rahadian', 'email' => 'reza.rahadian@example.com', 'password' => Hash::make('password'), 'role' => 'user'],
+            ['name' => 'Clara Tan', 'email' => 'clara.tan@example.com', 'password' => Hash::make('password'), 'role' => 'user'],
+            ['name' => 'Fajar Alfian', 'email' => 'fajar.alfian@example.com', 'password' => Hash::make('password'), 'role' => 'user'],
+            ['name' => 'Greysia Polii', 'email' => 'greysia.polii@example.com', 'password' => Hash::make('password'), 'role' => 'user'],
+            ['name' => 'Marcus Fernaldi Gideon', 'email' => 'marcus.gideon@example.com', 'password' => Hash::make('password'), 'role' => 'user'],
         ];
         foreach ($users as $u) {
             User::updateOrCreate(['email' => $u['email']], $u);
