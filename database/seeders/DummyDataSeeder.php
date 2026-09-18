@@ -33,13 +33,19 @@ class DummyDataSeeder extends Seeder
             Court::updateOrCreate(['name' => $court['name']], $court);
         }
 
-        // 5 Coaches
+        // 11 Coaches (Minimal 10 items)
         $coaches = [
-            ['name' => 'Coach Bima', 'bio' => 'Mantan atlet nasional tenis yang banting setir menjadi pro padel.', 'price_per_hour' => 150000, 'capacity' => 4, 'phone' => '081234567801', 'is_available' => true],
-            ['name' => 'Coach Sarah', 'bio' => 'Spesialis mengajar pemula dan anak-anak.', 'price_per_hour' => 120000, 'capacity' => 6, 'phone' => '081234567802', 'is_available' => true],
-            ['name' => 'Coach Anton', 'bio' => 'Pelatih taktik dan strategi ganda padel.', 'price_per_hour' => 150000, 'capacity' => 4, 'phone' => '081234567803', 'is_available' => true],
-            ['name' => 'Coach Dita', 'bio' => 'Pelatih fisik dan stamina khusus padel.', 'price_per_hour' => 100000, 'capacity' => 10, 'phone' => '081234567804', 'is_available' => true],
-            ['name' => 'Coach Ricky (Pro)', 'bio' => 'Pelatih level advanced bersertifikasi internasional.', 'price_per_hour' => 250000, 'capacity' => 2, 'phone' => '081234567805', 'is_available' => false],
+            ['name' => 'Coach Bima Sakti', 'bio' => 'Mantan atlet nasional tenis yang banting setir menjadi pelatih pro padel bersertifikat FIP.', 'price_per_hour' => 150000, 'capacity' => 4, 'phone' => '081234567801', 'is_available' => true],
+            ['name' => 'Coach Sarah Az-Zahra', 'bio' => 'Spesialis pengajaran pemula, perbaikan grip dasar, dan program padel anak-anak.', 'price_per_hour' => 120000, 'capacity' => 6, 'phone' => '081234567802', 'is_available' => true],
+            ['name' => 'Coach Anton Wijaya', 'bio' => 'Master taktik ganda, rotasi lapangan, transisi bertahan ke menyerang, dan strategi turnamen.', 'price_per_hour' => 160000, 'capacity' => 4, 'phone' => '081234567803', 'is_available' => true],
+            ['name' => 'Coach Dita Kusuma', 'bio' => 'Pelatih fisik, footwork agility, kelincahan gerak, dan stamina khusus olahraga padel.', 'price_per_hour' => 110000, 'capacity' => 8, 'phone' => '081234567804', 'is_available' => true],
+            ['name' => 'Coach Ricky Hartono (Pro)', 'bio' => 'Pelatih level advanced bersertifikasi WPT dengan fokus power smash, vibora, dan rulo.', 'price_per_hour' => 250000, 'capacity' => 2, 'phone' => '081234567805', 'is_available' => true],
+            ['name' => 'Coach Carlos Rodriguez', 'bio' => 'Head Coach asal Spanyol dengan pengalaman 10+ tahun melatih di Madrid Padel Academy.', 'price_per_hour' => 300000, 'capacity' => 4, 'phone' => '081234567806', 'is_available' => true],
+            ['name' => 'Coach Maya Indah', 'bio' => 'Pelatih ramah spesialis Ladies Clinic, fun sparring ganda, dan peningkatan konsistensi rally.', 'price_per_hour' => 130000, 'capacity' => 6, 'phone' => '081234567807', 'is_available' => true],
+            ['name' => 'Coach Rendy Pratama', 'bio' => 'Pakar teknik pantulan dinding kaca (wall rebounds), pertahanan bandeja, dan counter lob.', 'price_per_hour' => 140000, 'capacity' => 4, 'phone' => '081234567808', 'is_available' => true],
+            ['name' => 'Coach Gilang Ramadhan', 'bio' => 'Spesialis pukulan serang agresif, duel netting cepat, dan pengembalian servis tajam.', 'price_per_hour' => 150000, 'capacity' => 4, 'phone' => '081234567809', 'is_available' => true],
+            ['name' => 'Coach Nadia Safitri', 'bio' => 'Pelatih fundamental padel junior & youth development bersertifikasi federasi asia.', 'price_per_hour' => 100000, 'capacity' => 8, 'phone' => '081234567810', 'is_available' => true],
+            ['name' => 'Coach Hendra Setiawan', 'bio' => 'Pelatih reaksi refleks di depan net, blocking smash lawan, dan taktik antisipasi cepat.', 'price_per_hour' => 180000, 'capacity' => 4, 'phone' => '081234567811', 'is_available' => false],
         ];
         foreach ($coaches as $coach) {
             Coach::updateOrCreate(['name' => $coach['name']], $coach);
@@ -66,24 +72,35 @@ class DummyDataSeeder extends Seeder
             Inventory::updateOrCreate(['item_code' => $inv['item_code']], $inv);
         }
 
-        // 5 Announcements
+        // 10 Announcements (Minimal 10 items)
         $announcements = [
-            ['title' => 'Promo Grand Opening', 'content' => 'Selamat datang di Maaafiqs Padel! Nikmati diskon hingga 50% untuk bulan pertama operasional kami. Yuk segera booking lapanganmu!', 'is_active' => true],
-            ['title' => 'Turnamen Padel Amatir 2026', 'content' => 'Daftarkan tim ganda kamu untuk turnamen Padel Amatir akhir tahun ini. Hadiah jutaan rupiah menanti!', 'is_active' => true],
-            ['title' => 'Perawatan Lapangan Rutin', 'content' => 'Setiap hari Senin jam 08:00 - 12:00, lapangan VIP akan ditutup untuk perawatan rutin.', 'is_active' => true],
-            ['title' => 'Aturan Sepatu Padel', 'content' => 'Demi menjaga kualitas lapangan, semua pemain diwajibkan menggunakan sepatu olahraga bersol karet datar atau sepatu khusus padel/tenis.', 'is_active' => true],
-            ['title' => 'Coach Baru Bergabung', 'content' => 'Sambut Coach Sarah yang siap membantu kalian dari tingkat dasar. Booking sekarang!', 'is_active' => false],
+            ['title' => 'Promo Grand Opening 50%', 'content' => 'Selamat datang di Maaafiqs Padel Arena! Nikmati potongan harga hingga 50% untuk seluruh lapangan di bulan pertama peresmian. Booking sekarang sebelum slot habis!', 'is_active' => true],
+            ['title' => 'Turnamen Padel Arena Open 2026', 'content' => 'Pendaftaran turnamen tahunan ganda putra dan campuran resmi dibuka! Rebut total hadiah jutaan rupiah dan piala bergilir bergengsi.', 'is_active' => true],
+            ['title' => 'Weekend Social Morning Sparring', 'content' => 'Setiap Sabtu & Minggu pukul 07:00 - 10:00 WIB, ikuti sesi main bareng santai untuk mencari partner main baru dan mengasah kemampuan.', 'is_active' => true],
+            ['title' => 'Aturan Wajib Sepatu Sol Datar', 'content' => 'Demi menjaga kualitas karpet Mondo dan keselamatan bersama, semua pemain wajib menggunakan sepatu sol karet datar atau sepatu khusus padel/tenis.', 'is_active' => true],
+            ['title' => 'Perawatan Lapangan Rutin Setiap Senin', 'content' => 'Lapangan indoor akan menjalani pembersihan dan penyisiran pasir silika rutin setiap hari Senin pagi pukul 06:00 - 09:00 WIB.', 'is_active' => true],
+            ['title' => 'Masterclass Clinic bersama Coach Carlos', 'content' => 'Ikuti sesi latihan eksklusif 2 jam mendalami teknik wall play dan positioning bersama Coach Carlos Rodriguez dari Spanyol.', 'is_active' => true],
+            ['title' => 'Program Member Baru: Gratis Sewa Raket', 'content' => 'Pengguna yang baru pertama kali melakukan reservasi berhak mendapatkan voucher gratis sewa raket Babolat/Bullpadel di konter pro shop.', 'is_active' => true],
+            ['title' => 'Komunitas Padel Jakarta: Night Smash', 'content' => 'Gabung komunitas Padel Night Smash setiap Rabu malam! Suasana fun match dengan live DJ dan minuman isotonik gratis.', 'is_active' => true],
+            ['title' => 'Holiday Junior Coaching Camp', 'content' => 'Program liburan sekolah anak usia 7-16 tahun untuk belajar olahraga padel secara intensif dan menyenangkan bersama pelatih berlisensi.', 'is_active' => true],
+            ['title' => 'Diskon Khusus Mahasiswa & Pelajar', 'content' => 'Tunjukkan kartu pelajar/mahasiswa aktif di resepsionis dan dapatkan diskon 10% untuk sesi main hari kerja (Senin - Jumat 09:00 - 16:00).', 'is_active' => false],
         ];
         foreach ($announcements as $ann) {
             Announcement::updateOrCreate(['title' => $ann['title']], $ann);
         }
 
-        // 5 Discounts
+        // 11 Discounts (Minimal 10 items)
         $discounts = [
             ['code' => 'WELCOME50', 'type' => 'percentage', 'percentage' => 50, 'nominal_amount' => null, 'valid_until' => Carbon::now()->addDays(30), 'is_active' => true],
             ['code' => 'WEEKEND20', 'type' => 'percentage', 'percentage' => 20, 'nominal_amount' => null, 'valid_until' => Carbon::now()->addDays(60), 'is_active' => true],
             ['code' => 'POTONGAN50RB', 'type' => 'nominal', 'percentage' => null, 'nominal_amount' => 50000, 'valid_until' => Carbon::now()->addDays(45), 'is_active' => true],
             ['code' => 'STUDENT10', 'type' => 'percentage', 'percentage' => 10, 'nominal_amount' => null, 'valid_until' => null, 'is_active' => true],
+            ['code' => 'SMASH100K', 'type' => 'nominal', 'percentage' => null, 'nominal_amount' => 100000, 'valid_until' => Carbon::now()->addDays(60), 'is_active' => true],
+            ['code' => 'EARLYBIRD15', 'type' => 'percentage', 'percentage' => 15, 'nominal_amount' => null, 'valid_until' => Carbon::now()->addDays(90), 'is_active' => true],
+            ['code' => 'NIGHTOWL10', 'type' => 'percentage', 'percentage' => 10, 'nominal_amount' => null, 'valid_until' => Carbon::now()->addDays(30), 'is_active' => true],
+            ['code' => 'PADELMANIA25', 'type' => 'percentage', 'percentage' => 25, 'nominal_amount' => null, 'valid_until' => Carbon::now()->addDays(40), 'is_active' => true],
+            ['code' => 'PROMOTION30', 'type' => 'percentage', 'percentage' => 30, 'nominal_amount' => null, 'valid_until' => Carbon::now()->addDays(20), 'is_active' => true],
+            ['code' => 'FLASHDEAL75K', 'type' => 'nominal', 'percentage' => null, 'nominal_amount' => 75000, 'valid_until' => Carbon::now()->addDays(15), 'is_active' => true],
             ['code' => 'EXPIRED5', 'type' => 'percentage', 'percentage' => 5, 'nominal_amount' => null, 'valid_until' => Carbon::now()->subDays(5), 'is_active' => false],
         ];
         foreach ($discounts as $disc) {
